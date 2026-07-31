@@ -1,0 +1,2607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Beauty Salon - Ladies Parlor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+<style>
+:root {
+  --primary: #B76E78;
+  --primary-dark: #9A5A63;
+  --primary-light: #D4959E;
+  --primary-pale: #F4E1E4;
+  --secondary: #1B1811;
+  --accent-gold: #C9A96E;
+  --accent-gold-light: #E0C992;
+  --accent-gold-pale: #F5EDD6;
+  --rose: #E8A0B4;
+  --rose-light: #F8D7E0;
+  --blush: #FDF0F0;
+  --cream: #FFFBF5;
+  --warm-white: #FEFCF8;
+  --bg-light: #FDF8F7;
+  --bg-white: #FFFFFF;
+  --text-dark: #1B1811;
+  --text-muted: #6B6565;
+  --text-light: #9E9494;
+  --border: #E8DDDB;
+  --border-light: #F0E8E6;
+  --shadow-sm: 0 2px 10px rgba(27, 24, 17, 0.06);
+  --shadow: 0 4px 20px rgba(27, 24, 17, 0.08);
+  --shadow-lg: 0 10px 40px rgba(27, 24, 17, 0.12);
+  --shadow-glow: 0 4px 20px rgba(183, 110, 120, 0.2);
+  --radius: 12px;
+  --radius-lg: 20px;
+  --font-script: 'Great Vibes', cursive;
+  --font-serif-display: 'Playfair Display SC', serif;
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Nunito', sans-serif;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body {
+  font-family: var(--font-body);
+  color: var(--text-dark);
+  background: var(--warm-white);
+  line-height: 1.7;
+  overflow-x: hidden;
+  font-weight: 400;
+}
+a { text-decoration: none; color: inherit; transition: var(--transition); }
+ul { list-style: none; }
+img { max-width: 100%; height: auto; display: block; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.section { padding: 110px 0; }
+
+.logo-beauty, .hero-beauty { font-family: var(--font-script); font-weight: 400; color: var(--primary); }
+.logo-salon, .hero-salon { font-family: var(--font-serif-display); font-weight: 700; color: var(--secondary); }
+h1, h2, h3, h4, h5, h6, .section-title, .service-name, .contact-card h4, .footer h4 { font-family: var(--font-heading); }
+body, p, .service-desc, .section-desc, .callback-desc, .about-text p, .footer p, .footer a,
+.form-group label, .form-group input, .form-group select, .form-group textarea,
+.btn-primary, .btn-callback, .btn-outline, .section-tag, .stat-label, .footer-address, .footer-bottom,
+.nav-link, .dropdown-btn, .review-text, .review-author, .review-date,
+.login-form label, .login-form input, .review-form label, .review-form input, .review-form textarea,
+.admin-btn, .offer-card h3, .offer-card p, .offer-tag { font-family: var(--font-body); }
+.highlight { color: var(--primary); }
+
+.section-header { text-align: center; margin-bottom: 60px; }
+.section-tag {
+  display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--primary);
+  background: linear-gradient(135deg, var(--primary-pale), var(--accent-gold-pale));
+  padding: 7px 20px; border-radius: 50px; margin-bottom: 16px;
+}
+.section-title { font-size: 44px; font-weight: 700; color: var(--secondary); line-height: 1.2; margin-bottom: 8px; }
+.section-desc { font-size: 16px; color: var(--text-muted); max-width: 600px; margin: 14px auto 0; }
+.divider { display: flex; justify-content: center; margin: 20px 0 0; gap: 8px; }
+.divider span {
+  display: block; width: 60px; height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--accent-gold), var(--primary));
+  background-size: 200% 100%; border-radius: 4px;
+  animation: shimmer 3s ease-in-out infinite;
+}
+.divider.left { justify-content: flex-start; }
+@keyframes shimmer { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+
+/* ====== HEADER ====== */
+.header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-light); transition: var(--transition);
+}
+.header.scrolled { box-shadow: 0 2px 30px rgba(27,24,17,0.1); border-bottom-color: var(--border); }
+.progress-bar {
+  position: absolute; bottom: -1px; left: 0; height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--accent-gold), var(--rose));
+  width: 0%; transition: width 0.1s linear; border-radius: 0 2px 2px 0;
+}
+.header-inner { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+.logo { display: flex; align-items: baseline; gap: 4px; flex-shrink: 0; }
+.logo-beauty { font-size: 30px; line-height: 1; }
+.logo-salon { font-size: 20px; line-height: 1; letter-spacing: 1px; }
+
+.nav { margin-left: auto; }
+.nav-list { display: flex; align-items: center; gap: 28px; }
+.nav-link {
+  font-size: 14px; font-weight: 600; color: var(--text-muted);
+  position: relative; padding: 4px 0; letter-spacing: 0.5px;
+}
+.nav-link::after {
+  content: ''; position: absolute; bottom: -2px; left: 0;
+  width: 0; height: 2.5px;
+  background: linear-gradient(90deg, var(--primary), var(--accent-gold));
+  transition: var(--transition); border-radius: 2px;
+}
+.nav-link:hover, .nav-link.active { color: var(--primary); }
+.nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+.dropdown { position: relative; }
+.dropdown-btn {
+  font-size: 14px; font-weight: 600; color: var(--text-muted);
+  cursor: pointer; padding: 4px 0; letter-spacing: 0.5px;
+  background: none; border: none;
+  display: flex; align-items: center; gap: 6px;
+  position: relative;
+}
+.dropdown-btn::after {
+  content: ''; position: absolute; bottom: -2px; left: 0;
+  width: 0; height: 2.5px;
+  background: linear-gradient(90deg, var(--primary), var(--accent-gold));
+  transition: var(--transition); border-radius: 2px;
+}
+.dropdown-btn:hover, .dropdown-btn.active { color: var(--primary); }
+.dropdown-btn:hover::after, .dropdown-btn.active::after { width: 100%; }
+.dropdown-btn i { font-size: 10px; transition: var(--transition); }
+.dropdown-btn.active i { transform: rotate(180deg); }
+.dropdown-menu {
+  position: absolute; top: calc(100% + 12px); right: 0;
+  background: var(--bg-white); border-radius: var(--radius);
+  box-shadow: var(--shadow-lg); border: 1px solid var(--border-light);
+  min-width: 220px; padding: 8px 0;
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: var(--transition); transform: translateY(8px);
+}
+.dropdown-menu.show { opacity: 1; visibility: visible; pointer-events: all; transform: translateY(0); }
+.dropdown-menu a, .dropdown-menu .menu-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 20px; font-size: 14px; color: var(--text-muted);
+  transition: var(--transition); cursor: pointer;
+}
+.dropdown-menu a:hover, .dropdown-menu .menu-item:hover { background: var(--blush); color: var(--primary); }
+.dropdown-menu a i, .dropdown-menu .menu-item i { width: 18px; color: var(--primary); font-size: 14px; }
+.dropdown-menu .divider-line { height: 1px; background: var(--border-light); margin: 4px 12px; }
+.login-status {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 20px; font-size: 12px; color: var(--text-light);
+  border-bottom: 1px solid var(--border-light); margin-bottom: 4px;
+}
+.login-status .user-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.login-status .user-dot.online { background: #4CAF50; }
+.login-status .user-dot.offline { background: #ccc; }
+
+.toast-container {
+  position: fixed; top: 90px; right: 24px; z-index: 9999;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.toast {
+  padding: 14px 22px; border-radius: var(--radius);
+  font-size: 14px; font-weight: 600; color: #fff;
+  box-shadow: var(--shadow-lg);
+  animation: toastIn 0.4s ease, toastOut 0.4s ease forwards;
+  animation-duration: 0.4s, 0.4s;
+  animation-delay: 0s, 2.6s;
+  display: flex; align-items: center; gap: 10px;
+  min-width: 260px;
+}
+.toast.success { background: linear-gradient(135deg, #2E7D32, #4CAF50); }
+.toast.error { background: linear-gradient(135deg, #c0392b, #e74c3c); }
+.toast.info { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); }
+.toast i { font-size: 18px; }
+@keyframes toastIn { from { opacity:0; transform:translateX(100px); } to { opacity:1; transform:translateX(0); } }
+@keyframes toastOut { from { opacity:1; transform:translateX(0); } to { opacity:0; transform:translateX(100px); } }
+
+.btn-callback {
+  display: inline-block; padding: 11px 26px;
+  background: linear-gradient(135deg, var(--secondary), #2D2822);
+  color: #fff; font-size: 13px; font-weight: 700; letter-spacing: 0.5px;
+  border-radius: 6px; border: 2px solid var(--secondary);
+  transition: var(--transition); white-space: nowrap;
+  position: relative; overflow: hidden; z-index: 1; flex-shrink: 0; margin-left: 20px;
+}
+.btn-callback::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  opacity: 0; z-index: -1; transition: var(--transition);
+}
+.btn-callback:hover { color: #fff; border-color: var(--primary); transform: translateY(-2px); box-shadow: 0 4px 15px rgba(183,110,120,0.3); }
+.btn-callback:hover::before { opacity: 1; }
+
+.hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+.hamburger span { display: block; width: 24px; height: 2.5px; background: var(--secondary); border-radius: 4px; transition: var(--transition); }
+
+/* ====== HERO ====== */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #1B1811 0%, #2D2420 40%, #3A2828 70%, #1B1811 100%);
+  padding-top: 76px; overflow: hidden;
+}
+.hero-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: radial-gradient(ellipse at 20% 50%, rgba(183,110,120,0.25) 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 50%, rgba(201,169,110,0.15) 0%, transparent 50%);
+}
+.hero-floating-bg {
+  position: absolute; inset: 0; z-index: 1;
+  background: radial-gradient(2px 2px at 20% 30%, rgba(201,169,110,0.3), transparent),
+              radial-gradient(2px 2px at 40% 70%, rgba(183,110,120,0.3), transparent),
+              radial-gradient(2px 2px at 60% 20%, rgba(201,169,110,0.2), transparent),
+              radial-gradient(2px 2px at 80% 60%, rgba(183,110,120,0.25), transparent);
+}
+.float-icon { position: absolute; font-size: 20px; opacity: 0.3; animation: floatAnim 6s ease-in-out infinite; z-index: 2; pointer-events: none; }
+.float-icon-1 { top:20%; left:10%; color:var(--accent-gold); font-size:24px; animation-delay:0s; }
+.float-icon-2 { top:60%; right:12%; color:var(--rose); font-size:18px; animation-delay:2s; }
+.float-icon-3 { bottom:25%; left:50%; color:var(--accent-gold-light); font-size:16px; animation-delay:4s; }
+@keyframes floatAnim {
+  0%,100%{transform:translateY(0) rotate(0deg)}
+  25%{transform:translateY(-15px) rotate(5deg)}
+  50%{transform:translateY(-8px) rotate(-3deg)}
+  75%{transform:translateY(-18px) rotate(2deg)}
+}
+.hero-content { position: relative; z-index: 3; text-align: center; color: #fff; max-width: 800px; }
+.hero-tag { font-size:14px; font-weight:600; letter-spacing:4px; text-transform:uppercase; color:var(--accent-gold-light); margin-bottom:12px; }
+.hero-title { line-height:1.1; margin-bottom:16px; }
+.hero-beauty { font-size:90px; display:block; color:var(--rose); text-shadow:0 0 40px rgba(183,110,120,0.3); }
+.hero-salon { font-size:52px; letter-spacing:4px; color:#fff; display:block; }
+.hero-divider { width:80px; height:3px; background:linear-gradient(90deg,var(--accent-gold),var(--rose)); margin:20px auto; border-radius:4px; }
+.hero-subtitle { font-family:var(--font-heading); font-size:22px; font-weight:500; font-style:italic; color:var(--accent-gold-light); margin-bottom:16px; }
+.hero-ladies { font-size:16px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--rose); margin-bottom:16px; animation:pulseSoft 2s ease-in-out infinite; }
+@keyframes pulseSoft { 0%,100%{opacity:0.8} 50%{opacity:1} }
+.hero-desc { font-size:16px; opacity:0.85; max-width:600px; margin:0 auto 36px; line-height:1.8; }
+.hero-btns { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+.btn-primary {
+  display:inline-flex; align-items:center; gap:10px;
+  padding:15px 36px; background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+  color:#fff; font-size:14px; font-weight:700; letter-spacing:0.5px;
+  border-radius:6px; border:2px solid transparent; transition:var(--transition); cursor:pointer;
+}
+.btn-primary:hover { transform:translateY(-3px); box-shadow:0 8px 25px rgba(183,110,120,0.4); }
+.btn-outline {
+  display:inline-flex; align-items:center; gap:10px;
+  padding:15px 36px; color:#fff; font-size:14px; font-weight:600;
+  letter-spacing:0.5px; border-radius:6px;
+  border:2px solid rgba(255,255,255,0.4); transition:var(--transition); cursor:pointer; background:transparent;
+}
+.btn-outline:hover { border-color:var(--accent-gold); background:rgba(201,169,110,0.1); transform:translateY(-3px); }
+.scroll-indicator {
+  position:absolute; bottom:40px; left:50%; transform:translateX(-50%);
+  z-index:3; display:flex; flex-direction:column; align-items:center; gap:8px;
+  color:rgba(255,255,255,0.5); font-size:12px; letter-spacing:2px; text-transform:uppercase; font-weight:600;
+}
+.mouse { width:24px; height:38px; border:2px solid rgba(255,255,255,0.3); border-radius:12px; position:relative; }
+.wheel { width:4px; height:8px; background:var(--accent-gold-light); border-radius:2px; position:absolute; top:6px; left:50%; transform:translateX(-50%); animation:scrollWheel 2s ease-in-out infinite; }
+@keyframes scrollWheel { 0%{opacity:1;transform:translateX(-50%) translateY(0)} 100%{opacity:0;transform:translateX(-50%) translateY(14px)} }
+
+/* ====== ABOUT ====== */
+.about { background: linear-gradient(180deg, var(--warm-white) 0%, var(--blush) 50%, var(--warm-white) 100%); }
+.about-grid { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; max-width: 900px; margin: 0 auto; }
+.about-img-wrap { position: relative; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); width: 100%; }
+.about-img-wrap .slideshow-container { width: 100%; height: 520px; position: relative; overflow: hidden; border-radius: var(--radius-lg); }
+.about-img-wrap .slideshow-container .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.2s ease; }
+.about-img-wrap .slideshow-container .slide.active { opacity: 1; }
+.about-img-wrap .slideshow-container .slide img { width: 100%; height: 100%; object-fit: cover; }
+.about-img-wrap .slideshow-container .slide-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: var(--bg-light); color: var(--text-light); font-size: 14px; flex-direction: column; gap: 12px; }
+.about-img-wrap .slideshow-container .slide-placeholder i { font-size: 48px; color: var(--border); }
+.about-img-wrap .slideshow-dots { position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 5; }
+.about-img-wrap .slideshow-dots .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.4); cursor: pointer; transition: var(--transition); border: none; }
+.about-img-wrap .slideshow-dots .dot.active { background: var(--accent-gold); transform: scale(1.2); }
+.about-img-wrap:hover img { transform: scale(1.05); }
+.about-img-badge {
+  position: absolute; bottom: 20px; right: -20px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #fff; padding: 18px 22px; border-radius: var(--radius); text-align: center; box-shadow: var(--shadow-glow);
+}
+.badge-number { display: block; font-family: var(--font-heading); font-size: 28px; font-weight: 700; line-height: 1; }
+.badge-text { font-size: 11px; opacity: 0.9; margin-top: 2px; font-weight: 600; letter-spacing: 1px; }
+.about-text p { margin-bottom: 16px; color: var(--text-muted); font-size: 15px; line-height: 1.9; }
+.about-text strong { color: var(--primary); }
+
+/* ====== OFFERS ====== */
+.offers { background: linear-gradient(180deg, var(--blush), var(--warm-white)); position: relative; }
+.offers-bar {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+.offer-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border-radius: 50px;
+  border: 2px solid var(--border);
+  background: var(--bg-white);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.offer-tab:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+.offer-tab.active { border-color: var(--primary); background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: #fff; box-shadow: 0 4px 15px rgba(183,110,120,0.3); }
+.offer-tab i { font-size: 18px; }
+
+/* Offers display area */
+.offers-display {
+  max-width: 700px;
+  margin: 0 auto;
+  min-height: 200px;
+  position: relative;
+}
+.offer-card-main {
+  background: var(--bg-white);
+  border-radius: var(--radius-lg);
+  padding: 40px 36px;
+  text-align: center;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-sm);
+  display: none;
+  animation: fadeInUp 0.5s ease;
+}
+.offer-card-main.visible { display: block; }
+.offer-card-main .big-icon { font-size: 52px; margin-bottom: 16px; }
+.offer-card-main h3 { font-family: var(--font-heading); font-size: 26px; font-weight: 700; color: var(--secondary); margin-bottom: 8px; }
+.offer-card-main p { font-size: 15px; color: var(--text-muted); }
+.offer-card-main .offer-highlight {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--accent-gold-pale), var(--primary-pale));
+  color: var(--primary-dark);
+  font-weight: 700;
+  font-size: 22px;
+  padding: 8px 28px;
+  border-radius: 8px;
+  margin: 16px 0;
+}
+.offer-card-main .offer-detail { font-size: 14px; color: var(--text-muted); margin-top: 8px; }
+
+/* Side Panel for Special Offers */
+.side-panel-overlay {
+  position: fixed; inset: 0; z-index: 3000;
+  background: rgba(27, 24, 17, 0.5);
+  backdrop-filter: blur(4px);
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.side-panel-overlay.open { display: block; opacity: 1; }
+.side-panel {
+  position: fixed; top: 0; right: 0; bottom: 0;
+  width: 480px; max-width: 90vw;
+  background: var(--bg-white);
+  z-index: 3001;
+  box-shadow: -10px 0 40px rgba(27,24,17,0.15);
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+.side-panel.open { transform: translateX(0); }
+.side-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 28px;
+  border-bottom: 1px solid var(--border-light);
+  flex-shrink: 0;
+}
+.side-panel-header h2 { font-family: var(--font-heading); font-size: 22px; font-weight: 700; color: var(--secondary); }
+.side-panel-close {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: none; background: var(--bg-light);
+  cursor: pointer; font-size: 18px; color: var(--text-muted);
+  display: flex; align-items: center; justify-content: center;
+  transition: var(--transition);
+}
+.side-panel-close:hover { background: var(--primary-pale); color: var(--primary); }
+.side-panel-body { padding: 24px 28px; flex: 1; overflow-y: auto; }
+
+.offer-category {
+  margin-bottom: 20px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.offer-category-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: var(--bg-light);
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--secondary);
+  transition: var(--transition);
+  text-align: left;
+}
+.offer-category-btn:hover { background: var(--primary-pale); }
+.offer-category-btn i { transition: var(--transition); color: var(--primary); }
+.offer-category-btn.active i { transform: rotate(180deg); }
+.offer-category-body {
+  display: none;
+  padding: 8px 20px 16px;
+}
+.offer-category-body.open { display: block; }
+.offer-category-body ul { list-style: disc; padding-left: 20px; }
+.offer-category-body li {
+  padding: 6px 0;
+  font-size: 14px;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border-light);
+}
+.offer-category-body li:last-child { border-bottom: none; }
+.offer-category-body li::marker { color: var(--primary); }
+
+/* Disclaimer */
+.offers-disclaimer {
+  text-align: center;
+  margin-top: 32px;
+  padding: 16px 20px;
+  background: var(--accent-gold-pale);
+  border-radius: var(--radius);
+  font-size: 13px;
+  color: var(--text-muted);
+  border: 1px solid var(--accent-gold-light);
+}
+.offers-disclaimer i { color: var(--accent-gold); margin-right: 6px; }
+
+/* Edit Offers panel */
+.edit-offers-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 6px;
+  border: 2px solid var(--accent-gold);
+  background: var(--bg-white);
+  color: var(--accent-gold);
+  cursor: pointer;
+  transition: var(--transition);
+  margin-top: 24px;
+}
+.edit-offers-btn:hover { background: var(--accent-gold); color: #fff; }
+.edit-offers-panel {
+  max-width: 700px;
+  margin: 20px auto 0;
+  background: var(--bg-white);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  border: 2px solid var(--accent-gold-light);
+  display: none;
+}
+.edit-offers-panel.visible { display: block; }
+.edit-offers-panel h3 { font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--secondary); margin-bottom: 20px; text-align: center; }
+.edit-offer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-light);
+  gap: 12px;
+}
+.edit-offer-row .eo-text { font-size: 14px; color: var(--text-muted); flex: 1; }
+.edit-offer-row .eo-tag { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 50px; background: var(--primary-pale); color: var(--primary-dark); }
+.edit-offer-row .eo-del {
+  width: 28px; height: 28px; border-radius: 50%;
+  border: none; background: #fee; color: #e74c3c;
+  cursor: pointer; font-size: 12px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.edit-offer-row .eo-del:hover { background: #e74c3c; color: #fff; }
+.add-offer-form { margin-top: 20px; padding-top: 20px; border-top: 2px dashed var(--border-light); }
+.add-offer-form h4 { font-size: 15px; font-weight: 700; color: var(--secondary); margin-bottom: 12px; }
+.add-offer-form .form-row-edit { display: flex; gap: 10px; flex-wrap: wrap; }
+.add-offer-form select, .add-offer-form input {
+  padding: 10px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: var(--font-body);
+  background: var(--bg-light);
+  outline: none;
+  flex: 1;
+  min-width: 140px;
+}
+.add-offer-form select:focus, .add-offer-form input:focus { border-color: var(--primary); }
+.add-offer-form .btn-add-offer {
+  padding: 10px 20px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.add-offer-form .btn-add-offer:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(183,110,120,0.3); }
+
+/* ====== SERVICES (Enrich-style portrait tabs) ====== */
+.services { background: linear-gradient(180deg, var(--bg-light), var(--warm-white)); position: relative; }
+.services::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 6px;
+  background: linear-gradient(90deg, var(--primary), var(--accent-gold), var(--rose), var(--primary));
+  background-size: 300% 100%; animation: gradientMove 6s ease-in-out infinite;
+}
+@keyframes gradientMove { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+
+.services-tabs-wrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin-bottom: 40px;
+  padding-bottom: 8px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-pale) transparent;
+}
+.services-tabs-wrapper::-webkit-scrollbar { height: 6px; }
+.services-tabs-wrapper::-webkit-scrollbar-track { background: transparent; }
+.services-tabs-wrapper::-webkit-scrollbar-thumb { background: var(--primary-pale); border-radius: 10px; }
+.services-tabs {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  padding: 0 4px;
+}
+.services-tab {
+  width: 170px;
+  height: 220px;
+  padding: 0;
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--border-light);
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition-slow);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0;
+  flex-shrink: 0;
+}
+.services-tab::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 30%, rgba(27,24,17,0.7) 85%, rgba(27,24,17,0.9) 100%);
+  transition: var(--transition);
+}
+.services-tab::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(183,110,120,0.2), rgba(183,110,120,0.4));
+  opacity: 0;
+  transition: var(--transition);
+}
+.services-tab:hover { transform: translateY(-6px) scale(1.02); box-shadow: var(--shadow-lg); border-color: var(--primary-light); }
+.services-tab:hover::after { opacity: 1; }
+.services-tab.active { border-color: var(--primary); box-shadow: 0 8px 30px rgba(183,110,120,0.35); transform: translateY(-6px) scale(1.02); }
+.services-tab.active::after { opacity: 0.5; }
+.services-tab .tab-label {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.5px;
+  position: relative;
+  z-index: 2;
+  padding: 16px 12px 18px;
+  width: 100%;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+/* Services accordion panel */
+.services-panel {
+  max-width: 800px;
+  margin: 0 auto;
+  display: none;
+  animation: fadeInUp 0.5s ease;
+}
+.services-panel.visible { display: block; }
+.services-panel .panel-title {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--secondary);
+  margin-bottom: 20px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.services-panel .panel-title .pt-icon { font-size: 28px; }
+.service-item {
+  background: var(--bg-white);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  margin-bottom: 8px;
+  overflow: hidden;
+  transition: var(--transition);
+}
+.service-item:hover { border-color: var(--primary-pale); box-shadow: var(--shadow-sm); }
+.service-item-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-dark);
+  text-align: left;
+  transition: var(--transition);
+}
+.service-item-btn:hover { background: var(--blush); }
+.service-item-btn .si-name { flex: 1; }
+.service-item-btn .si-price {
+  color: var(--primary);
+  font-weight: 700;
+  margin-right: 12px;
+  white-space: nowrap;
+}
+.service-item-btn .si-arrow { color: var(--text-light); font-size: 12px; transition: var(--transition); }
+.service-item-btn.active .si-arrow { transform: rotate(180deg); color: var(--primary); }
+.service-item-desc {
+  display: none;
+  padding: 0 20px 14px;
+  font-size: 13px;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+.service-item-desc.open { display: block; }
+
+/* ====== GALLERY ====== */
+.gallery { background: linear-gradient(180deg, var(--warm-white), var(--blush)); }
+.gallery-admin-bar { display: flex; justify-content: center; gap: 16px; margin-bottom: 36px; flex-wrap: wrap; }
+.admin-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 24px; font-size: 13px; font-weight: 700;
+  letter-spacing: 0.5px; border-radius: 6px; border: 2px solid var(--border);
+  background: var(--bg-white); color: var(--text-muted); cursor: pointer; transition: var(--transition);
+}
+.admin-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.admin-btn.upload-btn { border-color: var(--primary); color: var(--primary); }
+.admin-btn.upload-btn:hover { background: var(--primary); color: #fff; }
+.admin-btn.delete-btn { border-color: #e74c3c; color: #e74c3c; }
+.admin-btn.delete-btn:hover { background: #e74c3c; color: #fff; }
+.admin-btn i { font-size: 14px; }
+.gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.gallery-item { border-radius: var(--radius); overflow: hidden; position: relative; cursor: default; aspect-ratio: 1/1; background: var(--bg-light); display: flex; align-items: center; justify-content: center; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
+.gallery-item:hover img { transform: scale(1.08); }
+.gallery-item.empty-state { border: 2px dashed var(--border); color: var(--text-light); font-size: 14px; flex-direction: column; gap: 8px; }
+.gallery-item.empty-state i { font-size: 32px; color: var(--border); }
+.gallery-item .delete-checkbox { position: absolute; top: 10px; right: 10px; z-index: 5; width: 24px; height: 24px; cursor: pointer; accent-color: var(--primary); display: none; }
+.gallery-item.show-delete .delete-checkbox { display: block; }
+.gallery-item .gallery-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(183,110,120,0.7), rgba(201,169,110,0.3)); display: flex; align-items: center; justify-content: center; opacity: 0; transition: var(--transition); }
+.gallery-item .gallery-overlay span { color:#fff; font-family:var(--font-heading); font-size:16px; font-weight:600; letter-spacing:2px; text-transform:uppercase; border:2px solid rgba(255,255,255,0.6); padding:8px 24px; border-radius:4px; transform:translateY(20px); transition:var(--transition); }
+.gallery-item:hover .gallery-overlay { opacity:1; }
+.gallery-item:hover .gallery-overlay span { transform:translateY(0); }
+
+/* ====== REVIEWS ====== */
+.reviews { background: linear-gradient(180deg, var(--blush), var(--cream)); }
+.reviews-header { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 12px; }
+.reviews-header .section-title { margin-bottom: 0; }
+.reviews-header .emoji-big { font-size: 42px; }
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 40px; }
+.review-card { background: var(--bg-white); padding: 28px 24px; border-radius: var(--radius); border: 1px solid var(--border-light); transition: var(--transition); position: relative; }
+.review-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.review-stars { color: var(--accent-gold); font-size: 16px; margin-bottom: 10px; letter-spacing: 2px; }
+.review-text { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 14px; font-style: italic; }
+.review-author { font-weight: 700; font-size: 14px; color: var(--secondary); }
+.review-date { font-size: 12px; color: var(--text-light); }
+.review-form-wrapper {
+  max-width: 600px; margin: 0 auto; background: var(--bg-white);
+  padding: 36px; border-radius: var(--radius-lg); border: 1px solid var(--border);
+  box-shadow: var(--shadow); display: none;
+}
+.review-form-wrapper.visible { display: block; }
+.review-form-wrapper h3 { font-family: var(--font-heading); font-size: 22px; font-weight: 700; margin-bottom: 20px; color: var(--secondary); text-align: center; }
+.review-form .form-group { margin-bottom: 16px; }
+.review-form label { display: block; font-size: 13px; font-weight: 600; color: var(--secondary); margin-bottom: 6px; }
+.review-form input, .review-form select, .review-form textarea {
+  width: 100%; padding: 12px 16px; border: 1.5px solid var(--border); border-radius: 8px;
+  font-size: 14px; color: var(--text-dark); background: var(--bg-light); outline: none; transition: var(--transition);
+}
+.review-form input:focus, .review-form select:focus, .review-form textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(183,110,120,0.1); }
+.review-form textarea { resize: vertical; min-height: 100px; }
+.review-form .star-rating { display: flex; gap: 6px; font-size: 28px; cursor: pointer; }
+.review-form .star-rating span { color: #ddd; transition: var(--transition); }
+.review-form .star-rating span.active, .review-form .star-rating span:hover { color: var(--accent-gold); }
+.write-review-toggle { display: flex; justify-content: center; margin-top: 10px; }
+.btn-write-review {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 36px; background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #fff; font-size: 14px; font-weight: 700; letter-spacing: 0.5px;
+  border-radius: 6px; border: none; cursor: pointer; transition: var(--transition);
+}
+.btn-write-review:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(183,110,120,0.4); }
+
+/* ====== REWARDS ====== */
+.rewards { background: linear-gradient(180deg, var(--cream), var(--blush)); }
+.rewards-dashboard { max-width: 800px; margin: 0 auto; }
+.rewards-card {
+  background: var(--bg-white); border-radius: var(--radius-lg); padding: 32px;
+  border: 1px solid var(--border-light); box-shadow: var(--shadow); text-align: center; margin-bottom: 24px;
+}
+.rewards-points-display { margin: 20px 0; }
+.rewards-points-display .rp-number {
+  font-family: var(--font-heading); font-size: 56px; font-weight: 700;
+  background: linear-gradient(135deg, var(--accent-gold), var(--primary));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1;
+}
+.rewards-points-display .rp-label { font-size: 14px; color: var(--text-muted); margin-top: 4px; }
+.rewards-progress-bar { width:100%; height:8px; border-radius:10px; background:var(--border-light); margin:16px 0; overflow:hidden; }
+.rewards-progress-bar .rp-fill { height:100%; border-radius:10px; background:linear-gradient(90deg,var(--accent-gold),var(--primary)); transition:width 0.8s ease; }
+.rewards-tier { font-size:13px; color:var(--text-light); }
+.rewards-tier strong { color:var(--primary); }
+.rewards-vouchers { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:20px; }
+.reward-voucher {
+  background:var(--bg-light); border:2px solid var(--border); border-radius:var(--radius);
+  padding:20px 16px; text-align:center; transition:var(--transition); position:relative; overflow:hidden;
+}
+.reward-voucher.claimable { border-color:var(--accent-gold); background:var(--accent-gold-pale); cursor:pointer; }
+.reward-voucher.claimable:hover { transform:translateY(-4px); box-shadow:var(--shadow-gold); }
+.reward-voucher.claimed { border-color:#4CAF50; background:#E8F5E9; }
+.reward-voucher .voucher-discount { font-family:var(--font-heading); font-size:28px; font-weight:700; color:var(--primary); }
+.reward-voucher .voucher-label { font-size:12px; color:var(--text-muted); margin:6px 0; }
+.reward-voucher .voucher-need { font-size:11px; color:var(--text-light); }
+.reward-voucher .voucher-badge {
+  position:absolute; top:8px; right:8px; font-size:10px; font-weight:700; text-transform:uppercase;
+  padding:2px 8px; border-radius:50px;
+}
+.reward-voucher.claimable .voucher-badge { background:var(--accent-gold); color:#fff; }
+.reward-voucher.claimed .voucher-badge { background:#4CAF50; color:#fff; }
+.rewards-admin-panel {
+  max-width:800px; margin:20px auto 0; background:var(--bg-white); border-radius:var(--radius-lg);
+  padding:32px; border:2px solid var(--primary-pale); display:none;
+}
+.rewards-admin-panel.visible { display:block; }
+.rewards-admin-panel h3 { font-family:var(--font-heading); font-size:20px; font-weight:700; color:var(--secondary); text-align:center; margin-bottom:20px; }
+.rew-admin-section { margin-bottom:24px; padding-bottom:20px; border-bottom:1px solid var(--border-light); }
+.rew-admin-section:last-child { border-bottom:none; margin-bottom:0; padding-bottom:0; }
+.rew-admin-section h4 { font-size:15px; font-weight:700; color:var(--primary); margin-bottom:12px; }
+.rew-admin-section .form-row-edit { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:8px; }
+.rew-admin-section select, .rew-admin-section input {
+  padding:10px 14px; border:1.5px solid var(--border); border-radius:8px;
+  font-size:13px; font-family:var(--font-body); background:var(--bg-light); outline:none; flex:1; min-width:120px;
+}
+.rew-admin-section select:focus, .rew-admin-section input:focus { border-color:var(--primary); }
+.rew-admin-section .btn-rew {
+  padding:10px 20px; background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+  color:#fff; border:none; border-radius:6px; font-size:13px; font-weight:700; cursor:pointer; transition:var(--transition);
+}
+.rew-admin-section .btn-rew:hover { transform:translateY(-2px); box-shadow:0 4px 15px rgba(183,110,120,0.3); }
+.rew-admin-section .btn-rew-outline {
+  padding:10px 20px; background:transparent; color:var(--primary);
+  border:2px solid var(--primary); border-radius:6px; font-size:13px; font-weight:700; cursor:pointer; transition:var(--transition);
+}
+.rew-admin-section .btn-rew-outline:hover { background:var(--primary); color:#fff; }
+.rew-admin-toggle {
+  display:inline-flex; align-items:center; gap:8px; padding:8px 18px; font-size:12px; font-weight:700;
+  border-radius:6px; border:2px solid var(--primary); background:var(--bg-white); color:var(--primary);
+  cursor:pointer; transition:var(--transition); margin-top:24px;
+}
+.rew-admin-toggle:hover { background:var(--primary); color:#fff; }
+.points-history { max-height:200px; overflow-y:auto; margin-top:12px; }
+.ph-item { display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--border-light); font-size:13px; }
+.ph-item .ph-desc { color:var(--text-muted); }
+.ph-item .ph-pts { font-weight:700; }
+.ph-item .ph-pts.positive { color:#4CAF50; }
+.ph-item .ph-pts.negative { color:#e74c3c; }
+.ph-empty { text-align:center; color:var(--text-light); padding:20px; font-size:13px; }
+
+/* ====== LOGIN MODAL ====== */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 2000;
+  background: rgba(27, 24, 17, 0.6); backdrop-filter: blur(4px);
+  display: none; align-items: center; justify-content: center; padding: 24px;
+}
+.modal-overlay.open { display: flex; }
+.login-modal {
+  background: var(--bg-white); border-radius: var(--radius-lg);
+  padding: 44px 36px; max-width: 440px; width: 100%;
+  box-shadow: var(--shadow-lg); position: relative;
+  animation: modalIn 0.3s ease; max-height: 90vh; overflow-y: auto;
+}
+@keyframes modalIn { from{opacity:0;transform:scale(0.9) translateY(20px)} to{opacity:1;transform:scale(1) translateY(0)} }
+.login-modal .close-modal {
+  position: absolute; top: 16px; right: 16px;
+  width: 36px; height: 36px; border-radius: 50%; border: none;
+  background: var(--bg-light); cursor: pointer; font-size: 18px;
+  color: var(--text-muted); display: flex; align-items: center; justify-content: center;
+}
+.login-modal .close-modal:hover { background: var(--primary-pale); color: var(--primary); }
+.login-modal h2 { font-family: var(--font-heading); font-size: 24px; font-weight: 700; color: var(--secondary); margin-bottom: 6px; text-align: center; }
+.login-modal .login-subtitle { text-align: center; font-size: 14px; color: var(--text-muted); margin-bottom: 20px; }
+.login-form .form-group { margin-bottom: 14px; }
+.login-form label { display: block; font-size: 13px; font-weight: 600; color: var(--secondary); margin-bottom: 6px; }
+.login-form input, .login-form select {
+  width: 100%; padding: 12px 16px; border: 1.5px solid var(--border); border-radius: 8px;
+  font-size: 14px; color: var(--text-dark); background: var(--bg-light); outline: none; transition: var(--transition);
+}
+.login-form input:focus, .login-form select:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(183,110,120,0.1); }
+.login-form .btn-login {
+  width: 100%; padding: 13px;
+  background: linear-gradient(135deg, var(--secondary), #2D2822);
+  color: #fff; font-size: 14px; font-weight: 700; border: none;
+  border-radius: 6px; cursor: pointer; transition: var(--transition); margin-top: 8px;
+}
+.login-form .btn-login:hover { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); box-shadow: 0 8px 25px rgba(183,110,120,0.3); transform: translateY(-2px); }
+.login-form .btn-login:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+.login-error { font-size: 13px; color: #e74c3c; text-align: center; margin-top: 12px; display: none; }
+.login-error.show { display: block; }
+.login-form .login-hint { font-size: 12px; color: var(--text-light); text-align: center; margin-top: 14px; line-height: 1.6; }
+.login-form .login-hint strong { color: var(--text-muted); }
+.role-selector { display: flex; gap: 12px; margin-bottom: 18px; }
+.role-btn {
+  flex: 1; padding: 14px 10px; border-radius: var(--radius);
+  border: 2px solid var(--border); background: var(--bg-light);
+  cursor: pointer; text-align: center; transition: var(--transition);
+  font-size: 14px; font-weight: 600; color: var(--text-muted);
+}
+.role-btn:hover { border-color: var(--primary-pale); }
+.role-btn.active { border-color: var(--primary); background: var(--primary-pale); color: var(--primary); }
+.role-btn i { display: block; font-size: 24px; margin-bottom: 6px; }
+.login-step { display: none; }
+.login-step.visible { display: block; }
+.back-btn {
+  background: none; border: none; color: var(--text-muted);
+  cursor: pointer; font-size: 13px; padding: 4px 0; margin-bottom: 14px;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.back-btn:hover { color: var(--primary); }
+
+/* ====== REQUESTS ====== */
+.requests { background: linear-gradient(180deg, var(--bg-light), var(--warm-white)); display: none; }
+.requests.visible { display: block; }
+.requests-list { max-width: 800px; margin: 0 auto; }
+.request-card {
+  background: var(--bg-white); padding: 20px 24px; border-radius: var(--radius);
+  border: 1px solid var(--border-light); margin-bottom: 16px;
+  transition: var(--transition); position: relative;
+}
+.request-card:hover { box-shadow: var(--shadow); }
+.request-card .req-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 8px; }
+.request-card .req-name { font-weight: 700; color: var(--secondary); font-size: 15px; }
+.request-card .req-phone { color: var(--primary); font-weight: 600; font-size: 14px; }
+.request-card .req-service { display: inline-block; background: var(--primary-pale); color: var(--primary-dark); font-size: 12px; font-weight: 600; padding: 3px 12px; border-radius: 50px; }
+.request-card .req-msg { font-size: 13px; color: var(--text-muted); margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border-light); }
+.request-card .req-date { font-size: 11px; color: var(--text-light); margin-top: 6px; }
+.request-card .req-badge { position: absolute; top: 12px; right: 12px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 3px 10px; border-radius: 50px; background: var(--accent-gold-pale); color: var(--accent-gold); }
+.requests-empty { text-align: center; padding: 40px; color: var(--text-light); }
+.requests-empty i { font-size: 40px; display: block; margin-bottom: 12px; opacity: 0.3; }
+
+/* ====== CALLBACK ====== */
+.callback { background: linear-gradient(180deg, var(--bg-light), var(--warm-white)); }
+.callback-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.callback-desc { color: var(--text-muted); margin: 16px 0 28px; font-size: 15px; line-height: 1.8; }
+.callback-info p { display: flex; align-items: center; gap: 12px; color: var(--text-muted); margin-bottom: 12px; font-size: 14px; }
+.callback-info i {
+  width: 40px; height: 40px;
+  background: linear-gradient(135deg, var(--primary-pale), var(--accent-gold-pale));
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  color: var(--primary); font-size: 15px; transition: var(--transition);
+}
+.callback-info p:hover i { background: linear-gradient(135deg, var(--primary), var(--accent-gold)); color: #fff; transform: scale(1.1); }
+.callback-form { background: var(--bg-white); padding: 44px; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); border: 1px solid var(--border); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { margin-bottom: 20px; position: relative; }
+.floating-label input, .floating-label textarea {
+  width: 100%; padding: 18px 16px 8px; border: 1.5px solid var(--border); border-radius: 8px;
+  font-family: var(--font-body); font-size: 14px; color: var(--text-dark);
+  background: var(--bg-light); transition: var(--transition); outline: none;
+}
+.floating-label input:focus, .floating-label textarea:focus { border-color: var(--primary); background: var(--bg-white); box-shadow: 0 0 0 3px rgba(183,110,120,0.1); }
+.floating-label label { position: absolute; left: 16px; top: 16px; font-size: 14px; color: var(--text-light); pointer-events: none; transition: var(--transition); }
+.floating-label input:focus ~ label, .floating-label input:not(:placeholder-shown) ~ label,
+.floating-label textarea:focus ~ label, .floating-label textarea:not(:placeholder-shown) ~ label { top: 6px; font-size: 11px; color: var(--primary); font-weight: 600; }
+.form-group:not(.floating-label) label { display: block; font-size: 13px; font-weight: 600; color: var(--secondary); margin-bottom: 6px; letter-spacing: 0.5px; }
+.form-group:not(.floating-label) input, .form-group select, .form-group textarea {
+  width: 100%; padding: 12px 16px; border: 1.5px solid var(--border); border-radius: 8px;
+  font-family: var(--font-body); font-size: 14px; color: var(--text-dark);
+  background: var(--bg-light); transition: var(--transition); outline: none;
+}
+.form-group:not(.floating-label) input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--primary); background: var(--bg-white); box-shadow: 0 0 0 3px rgba(183,110,120,0.1); }
+.floating-label textarea { resize: vertical; min-height: 90px; }
+.btn-submit { width: 100%; justify-content: center; padding: 15px 24px; font-size: 15px; background: linear-gradient(135deg, var(--secondary), #2D2822); border: none; }
+.btn-submit:hover { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); box-shadow: 0 8px 25px rgba(183,110,120,0.3); }
+.form-success { display: none; text-align: center; padding: 50px 20px; }
+.form-success i { font-size: 56px; background: linear-gradient(135deg, #4CAF50, #2E7D32); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 16px; }
+.form-success p { font-family: var(--font-heading); font-size: 20px; font-weight: 600; color: var(--secondary); }
+
+/* ====== CONTACT ====== */
+.contact { background: linear-gradient(180deg, var(--warm-white), var(--cream)); }
+.contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.contact-card {
+  text-align: center; padding: 38px 20px; border-radius: var(--radius);
+  border: 1px solid var(--border-light); transition: var(--transition-slow);
+  background: var(--bg-white); box-shadow: var(--shadow-sm);
+}
+.contact-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--primary-pale); }
+.contact-icon {
+  width: 56px; height: 56px; margin: 0 auto 16px;
+  background: linear-gradient(135deg, var(--primary-pale), var(--accent-gold-pale));
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 22px; color: var(--primary); transition: var(--transition-bounce);
+}
+.contact-card:hover .contact-icon { background: linear-gradient(135deg, var(--primary), var(--accent-gold)); color: #fff; transform: rotateY(360deg); }
+.contact-card h4 { font-size: 19px; font-weight: 700; margin-bottom: 8px; color: var(--secondary); }
+.contact-card p { font-size: 14px; color: var(--text-muted); }
+.contact-card .insta-link { display: inline-flex; align-items: center; gap: 8px; color: var(--primary); font-weight: 600; transition: var(--transition); }
+.contact-card .insta-link:hover { color: var(--primary-dark); transform: scale(1.05); }
+
+/* ====== FOOTER ====== */
+.footer {
+  background: linear-gradient(135deg, var(--secondary) 0%, #2D2822 50%, #1B1811 100%);
+  color: rgba(255,255,255,0.85); padding: 70px 0 0; position: relative;
+}
+.footer::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--accent-gold), var(--rose), var(--primary));
+  background-size: 300% 100%; animation: gradientMove 6s ease-in-out infinite;
+}
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.footer-brand .logo { margin-bottom: 14px; display: inline-flex; }
+.footer-brand .logo-beauty { font-size: 28px; }
+.footer-brand .logo-salon { font-size: 18px; color: rgba(255,255,255,0.9); }
+.footer-brand p { font-size: 14px; line-height: 1.8; color: rgba(255,255,255,0.55); margin-top: 12px; }
+.footer h4 { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 20px; }
+.footer-links ul, .footer-services ul { display: flex; flex-direction: column; gap: 12px; }
+.footer-links a, .footer-services a { font-size: 14px; color: rgba(255,255,255,0.55); transition: var(--transition); }
+.footer-links a:hover, .footer-services a:hover { color: var(--accent-gold-light); padding-left: 6px; }
+.social-links { display: flex; gap: 14px; margin-bottom: 18px; }
+.social-links a {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(255,255,255,0.06); display: flex; align-items: center;
+  justify-content: center; font-size: 20px; color: rgba(255,255,255,0.7);
+  transition: var(--transition-bounce);
+}
+.social-links a:hover { background: linear-gradient(135deg,var(--primary),var(--primary-dark)); color:#fff; transform:translateY(-4px) scale(1.1); box-shadow:0 6px 20px rgba(183,110,120,0.3); }
+.location-link .location-emoji { font-size: 22px; line-height: 1; }
+.footer-address { font-size: 13px; color: rgba(255,255,255,0.4); display: flex; align-items: center; gap: 6px; margin-top: 4px; }
+.footer-address i { color: var(--primary); }
+.footer-bottom { text-align: center; padding: 24px 0; font-size: 13px; color: rgba(255,255,255,0.35); }
+
+.scroll-top {
+  position: fixed; bottom: 30px; right: 30px;
+  width: 48px; height: 48px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #fff; border: none; cursor: pointer; font-size: 20px;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; visibility: hidden; transition: var(--transition);
+  z-index: 999; box-shadow: 0 4px 20px rgba(183,110,120,0.4);
+}
+.scroll-top.show { opacity: 1; visibility: visible; }
+.scroll-top:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(183,110,120,0.5); }
+
+[data-aos] { pointer-events: none; }
+[data-aos].aos-animate { pointer-events: auto; }
+
+@keyframes fadeInUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+
+@media (max-width: 992px) {
+  .services-tabs { gap: 12px; }
+  .services-tab { width: 120px; padding: 20px 10px; }
+  .reviews-grid { grid-template-columns: repeat(2,1fr); }
+  .about-img-wrap .slideshow-container { height: 380px; }
+  .callback-wrapper { grid-template-columns: 1fr; gap: 40px; }
+  .contact-grid { grid-template-columns: repeat(2,1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .side-panel { width: 400px; }
+}
+@media (max-width: 768px) {
+  .header-inner { height: 64px; position: relative; }
+  .nav { position: fixed; top: 64px; left: 0; right: 0; background: var(--bg-white); border-bottom: 2px solid var(--border); padding: 20px 24px; transform: translateY(-110%); opacity: 0; visibility: hidden; pointer-events: none; transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease; box-shadow: 0 10px 40px rgba(27,24,17,0.15); z-index: 999; overflow-y: auto; max-height: calc(100vh - 64px); }
+  .nav.open { transform: translateY(0); opacity: 1; visibility: visible; pointer-events: all; }
+  .nav-list { flex-direction: column; gap: 6px; }
+  .nav-link { font-size: 15px; padding: 8px 0; display: block; }
+  .btn-callback { font-size: 12px; padding: 8px 16px; margin-left: 0; position: relative; z-index: 1001; -webkit-tap-highlight-color: transparent; }
+  .hamburger { display: flex; z-index: 1002; position: relative; -webkit-tap-highlight-color: transparent; }
+  .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+  .hero-beauty { font-size: 56px; }
+  .hero-salon { font-size: 34px; }
+  .section { padding: 70px 0; }
+  .section-title { font-size: 32px; }
+  .services-tabs { gap: 10px; }
+  .services-tab { width: 100px; padding: 16px 8px; }
+  .services-tab .tab-icon { font-size: 24px; }
+  .services-tab .tab-label { font-size: 11px; }
+  .about-img-wrap .slideshow-container { height: 280px; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: repeat(2,1fr); gap: 12px; }
+  .callback-form { padding: 28px; }
+  .form-row { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+  .hero-btns { flex-direction: column; align-items: center; }
+  .scroll-indicator { display: none; }
+  .dropdown-menu { left: 0; right: auto; }
+  .dropdown { position: relative; width: 100%; }
+  .dropdown-btn { width: 100%; justify-content: space-between; padding: 8px 0; -webkit-tap-highlight-color: transparent; }
+  .dropdown-menu { position: static; top: auto; left: auto; right: auto; transform: none; box-shadow: none; border: none; border-radius: 0; min-width: auto; padding: 4px 0 4px 16px; background: transparent; opacity: 1; visibility: visible; pointer-events: all; display: none; margin: 0; }
+  .dropdown-menu.show { display: block; }
+  .dropdown-menu a, .dropdown-menu .menu-item { padding: 8px 16px; font-size: 14px; }
+  .login-status { padding: 6px 16px; border-bottom: none; }
+  .login-modal { padding: 36px 24px; }
+  .side-panel { width: 100vw; max-width: 100vw; }
+  .offer-tab { font-size: 13px; padding: 10px 18px; }
+  .offers-bar { gap: 10px; }
+}
+@media (max-width: 480px) {
+  .services-tabs { gap: 8px; }
+  .services-tab { width: 80px; padding: 12px 6px; }
+  .services-tab .tab-icon { font-size: 20px; }
+  .services-tab .tab-label { font-size: 10px; }
+  .service-item-btn { padding: 12px 14px; font-size: 13px; }
+  .gallery-grid { grid-template-columns: 1fr; }
+  .hero-beauty { font-size: 44px; }
+  .hero-salon { font-size: 28px; }
+  .hero-subtitle { font-size: 16px; }
+  .btn-callback { font-size: 11px; padding: 6px 12px; }
+  .offer-tab { width: 100%; justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- ====== HEADER ====== -->
+    <header class="header" id="header">
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <span class="logo-beauty">Beauty</span>
+                <span class="logo-salon">Salon</span>
+            </a>
+            <nav class="nav" id="navMenu">
+                <ul class="nav-list">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#offers" class="nav-link">Offers</a></li>
+                    <li><a href="#callback" class="nav-link">Contact</a></li>
+                    <li>
+                        <div class="dropdown" id="mainDropdown">
+                            <button class="dropdown-btn" id="dropdownToggle">
+                                More <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="dropdown-menu" id="dropdownMenu">
+                                <div class="login-status" id="loginStatus">
+                                    <span class="user-dot offline" id="userDot"></span>
+                                    <span id="userStatusText">Not logged in</span>
+                                </div>
+                                <a href="#about"><i class="fas fa-info-circle"></i> About</a>
+                                <a href="#gallery"><i class="fas fa-images"></i> Gallery</a>
+                                <a href="#reviews"><i class="fas fa-star"></i> Reviews</a>
+                                <a href="#rewards" id="rewardsNavLink" style="display:none;"><i class="fas fa-gift"></i> Rewards</a>
+                                <a href="#requests" id="requestsNavLink" style="display:none;"><i class="fas fa-clipboard-list"></i> Requests</a>
+                                <div class="divider-line"></div>
+                                <a href="#" id="loginLogoutBtn"><i class="fas fa-sign-in-alt" id="loginIcon"></i> <span id="loginBtnText">Login</span></a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <a href="#callback" class="btn-callback">Request a Callback</a>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+        <div class="progress-bar" id="progressBar"></div>
+    </header>
+
+    <!-- ====== LOGIN MODAL ====== -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="login-modal">
+            <button class="close-modal" id="closeLoginModal">&times;</button>
+            <h2>Welcome! <span style="font-family:var(--font-script);color:var(--primary);">Beauty</span></h2>
+            <p class="login-subtitle" id="loginSubtitle">Choose your role to continue</p>
+            <div class="login-step visible" id="loginStep1">
+                <div class="role-selector">
+                    <div class="role-btn active" data-role="customer" id="roleCustomer">
+                        <i class="fas fa-user"></i>
+                        Customer
+                    </div>
+                    <div class="role-btn" data-role="admin" id="roleAdmin">
+                        <i class="fas fa-shield-alt"></i>
+                        Admin
+                    </div>
+                </div>
+                <button class="btn-login" id="roleNextBtn">Next <i class="fas fa-arrow-right"></i></button>
+                <p class="login-hint" style="margin-top:14px;">
+                    <strong>New here?</strong> <a href="#" id="signupLink" style="color:var(--primary);font-weight:700;">Create an account</a>
+                </p>
+            </div>
+            <div class="login-step" id="loginStepAdmin">
+                <button class="back-btn" id="backFromAdmin"><i class="fas fa-arrow-left"></i> Back</button>
+                <div class="form-group">
+                    <label for="adminCode">Admin Access Code</label>
+                    <input type="password" id="adminCode" placeholder="Enter admin code" />
+                </div>
+                <button class="btn-login" id="adminCodeBtn">Verify Code <i class="fas fa-arrow-right"></i></button>
+                <div class="login-error" id="adminCodeError">Incorrect admin code. Please try again.</div>
+            </div>
+            <div class="login-step" id="loginStepLogin">
+                <button class="back-btn" id="backToRole"><i class="fas fa-arrow-left"></i> Back</button>
+                <form class="login-form" id="loginForm">
+                    <div class="form-group">
+                        <label for="loginUser">Username</label>
+                        <input type="text" id="loginUser" placeholder="Enter username" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPass">Password</label>
+                        <input type="password" id="loginPass" placeholder="Enter password" required />
+                    </div>
+                    <button type="submit" class="btn-login" id="loginSubmitBtn">Login</button>
+                    <div class="login-error" id="loginError">Invalid username or password. Please try again.</div>
+                </form>
+            </div>
+            <div class="login-step" id="loginStepSignup">
+                <button class="back-btn" id="backFromSignup"><i class="fas fa-arrow-left"></i> Back to Login</button>
+                <form class="login-form" id="signupForm">
+                    <div class="form-group">
+                        <label for="signupUser">Choose Username</label>
+                        <input type="text" id="signupUser" placeholder="Enter username" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="signupPass">Choose Password</label>
+                        <input type="password" id="signupPass" placeholder="Enter password" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="signupRole">Sign up as</label>
+                        <select id="signupRole">
+                            <option value="customer">Customer</option>
+                            <option value="admin">Admin (requires admin code)</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="signupAdminCodeGroup" style="display:none;">
+                        <label for="signupAdminCode">Admin Access Code</label>
+                        <input type="password" id="signupAdminCode" placeholder="Enter admin code" />
+                        <div class="login-error" id="signupAdminCodeError" style="margin-top:6px;display:none;">Incorrect admin code.</div>
+                    </div>
+                    <button type="submit" class="btn-login" id="signupSubmitBtn">Create Account</button>
+                    <div class="login-error" id="signupError" style="margin-top:8px;display:none;">Username already exists. Please choose another.</div>
+                </form>
+                <p class="login-hint" style="margin-top:10px;">
+                    <a href="#" id="backToLoginLink" style="color:var(--primary);font-weight:600;">Already have an account? Login</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ====== SIDE PANEL (Special Offers) ====== -->
+    <div class="side-panel-overlay" id="sidePanelOverlay"></div>
+    <div class="side-panel" id="sidePanel">
+        <div class="side-panel-header">
+            <h2>🎯 Special Offers</h2>
+            <button class="side-panel-close" id="sidePanelClose">&times;</button>
+        </div>
+        <div class="side-panel-body" id="sidePanelBody">
+            <!-- Dynamic content -->
+        </div>
+    </div>
+
+    <!-- ====== HERO ====== -->
+    <section class="hero" id="home">
+        <div class="hero-overlay"></div>
+        <div class="hero-floating-bg"></div>
+        <div class="container hero-content">
+            <div class="float-icon float-icon-1">✦</div>
+            <div class="float-icon float-icon-2">✿</div>
+            <div class="float-icon float-icon-3">◈</div>
+            <p class="hero-tag" data-aos="fade-down" data-aos-duration="800">Welcome to</p>
+            <h1 class="hero-title" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                <span class="hero-beauty">Beauty</span>
+                <span class="hero-salon">Salon</span>
+            </h1>
+            <div class="hero-divider" data-aos="zoom-in" data-aos-delay="400"></div>
+            <p class="hero-subtitle" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">Where Every Woman Deserves to Shine</p>
+            <p class="hero-ladies" data-aos="fade-up" data-aos-duration="800" data-aos-delay="550">🌸 Only for Ladies</p>
+            <p class="hero-desc" data-aos="fade-up" data-aos-duration="800" data-aos-delay="600">Indulge in premium beauty and wellness services tailored just for you. Experience the art of looking and feeling beautiful.</p>
+            <div class="hero-btns" data-aos="fade-up" data-aos-duration="800" data-aos-delay="700">
+                <a href="#services" class="btn-primary">Explore Our Services <i class="fas fa-arrow-right"></i></a>
+                <a href="#callback" class="btn-outline">Request a Callback</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll Down</span>
+            <div class="mouse"><div class="wheel"></div></div>
+        </div>
+    </section>
+
+    <!-- ====== ABOUT ====== -->
+    <section class="about section" id="about">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">About Us</span>
+                <h2 class="section-title">Your Destination for <span class="highlight">Beauty &amp; Wellness</span></h2>
+                <div class="divider"><span></span></div>
+            </div>
+            <div class="about-grid">
+                <div class="about-image" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="about-img-wrap">
+                        <div class="slideshow-container" id="aboutSlideshow">
+                            <div class="slide active">
+                                <img src="slide1.png" alt="Beauty Salon 1" />
+                            </div>
+                            <div class="slide">
+                                <img src="slide2.png" alt="Beauty Salon 2" />
+                            </div>
+                            <div class="slide">
+                                <img src="slide3.png" alt="Beauty Salon 3" />
+                            </div>
+                            <div class="slide">
+                                <img src="slide4.png" alt="Beauty Salon 4" />
+                            </div>
+                            <div class="slide">
+                                <img src="slide5.png" alt="Beauty Salon 5" />
+                            </div>
+                        </div>
+                        <div class="slideshow-dots" id="slideshowDots">
+                            <button class="dot active" data-index="0"></button>
+                            <button class="dot" data-index="1"></button>
+                            <button class="dot" data-index="2"></button>
+                            <button class="dot" data-index="3"></button>
+                            <button class="dot" data-index="4"></button>
+                        </div>
+                        <div class="about-img-badge">
+                            <span class="badge-number">5+</span>
+                            <span class="badge-text">Years of Excellence</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-text" data-aos="fade-left" data-aos-duration="1000">
+                    <p>At <strong>Beauty Salon</strong>, we believe every woman is beautiful in her own unique way. Our mission is to enhance that natural beauty with expert care, premium products, and a warm, relaxing environment.</p>
+                    <p>Founded with a passion for beauty and a commitment to excellence, our team of skilled professionals offers a comprehensive range of services — from chic haircuts and vibrant color to rejuvenating facials, flawless makeup, and indulgent body treatments.</p>
+                    <p>Step into our sanctuary and let us pamper you. Whether you're prepping for a special occasion or simply need some "me time," we're here to make you feel radiant inside and out.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== OFFERS ====== -->
+    <section class="offers section" id="offers">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">Offers &amp; Discounts</span>
+                <h2 class="section-title">Exclusive <span class="highlight">Deals</span> Just for You</h2>
+                <div class="divider"><span></span></div>
+            </div>
+
+            <div class="offers-bar" data-aos="fade-up">
+                <button class="offer-tab active" data-offer="student">
+                    <i class="fas fa-graduation-cap"></i> Student Discount
+                </button>
+                <button class="offer-tab" data-offer="festive">
+                    <i class="fas fa-calendar-alt"></i> Festive Offers
+                </button>
+                <button class="offer-tab" data-offer="special" id="specialOffersTab">
+                    <i class="fas fa-fire"></i> Special Offers
+                </button>
+            </div>
+
+            <div class="offers-display" data-aos="fade-up" data-aos-delay="100">
+                <!-- Student Discount -->
+                <div class="offer-card-main visible" id="offerStudent">
+                    <div class="big-icon">🎓</div>
+                    <h3>Student Discount</h3>
+                    <div class="offer-highlight">Flat 25% OFF</div>
+                    <p>on all salon services! Just show your valid student ID card and save big on your beauty treatment.</p>
+                    <p class="offer-detail">✨ Available on all services including haircuts, facials, waxing &amp; makeup.</p>
+                </div>
+
+                <!-- Festive Offers -->
+                <div class="offer-card-main" id="offerFestive">
+                    <div class="big-icon">🎉</div>
+                    <h3>Festive Offers</h3>
+                    <div class="offer-highlight">Celebrate with Us!</div>
+                    <p>Special festive discounts on bridal packages, party makeup, and grooming combos during festival seasons.</p>
+                    <p class="offer-detail">🎊 Stay tuned for our Diwali, Holi, and Wedding Season specials!</p>
+                </div>
+
+                <!-- Special Offers (trigger side panel) -->
+                <div class="offer-card-main" id="offerSpecial">
+                    <div class="big-icon">🎯</div>
+                    <h3>Special Offers</h3>
+                    <p>Click below to explore our detailed category-wise special offers!</p>
+                    <button class="btn-primary" style="margin-top:20px;" id="openSidePanelBtn">
+                        <i class="fas fa-eye"></i> View Special Offers
+                    </button>
+                </div>
+            </div>
+
+            <!-- Disclaimer -->
+            <div class="offers-disclaimer" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-info-circle"></i>
+                <strong>Disclaimer:</strong> All discounts apply on the prices given in the price card at the salon. Offers cannot be clubbed with any other ongoing promotion.
+            </div>
+
+            <!-- Edit Offers (Admin only) -->
+            <div style="text-align:center;" id="editOffersAdminSection" data-aos="fade-up">
+                <button class="edit-offers-btn" id="editOffersBtn" style="display:none;">
+                    <i class="fas fa-edit"></i> Edit Offers
+                </button>
+            </div>
+            <div class="edit-offers-panel" id="editOffersPanel">
+                <h3>✏️ Manage Special Offers</h3>
+                <div id="editOffersList"></div>
+                <div class="add-offer-form">
+                    <h4>➕ Add New Offer</h4>
+                    <div class="form-row-edit">
+                        <select id="addOfferCategory">
+                            <option value="Skin Services">Skin Services</option>
+                            <option value="Hair Services">Hair Services</option>
+                            <option value="Makeup Offers">Makeup Offers</option>
+                        </select>
+                        <input type="text" id="addOfferText" placeholder="e.g. 25% OFF on Hair Spa" />
+                        <button class="btn-add-offer" id="addOfferBtn">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== SERVICES (Enrich-style) ====== -->
+    <section class="services section" id="services">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">Our Services</span>
+                <h2 class="section-title">Pamper Yourself with <span class="highlight">Our Expertise</span></h2>
+                <div class="divider"><span></span></div>
+                <p class="section-desc">Tap on a category below to explore our services with prices.</p>
+            </div>
+
+            <div class="services-tabs-wrapper" data-aos="fade-up" data-aos-delay="100">
+            <div class="services-tabs">
+                <div class="services-tab active" data-category="hair" style="background-image:url('service-hair.png');"><div class="tab-label">Hair Services</div></div>
+                <div class="services-tab" data-category="bleach" style="background-image:url('service-bleach.png');"><div class="tab-label">Bleach</div></div>
+                <div class="services-tab" data-category="threading" style="background-image:url('service-threading.png');"><div class="tab-label">Threading</div></div>
+                <div class="services-tab" data-category="facial" style="background-image:url('service-facial.png');"><div class="tab-label">Facial</div></div>
+                <div class="services-tab" data-category="waxing" style="background-image:url('service-waxing.png');"><div class="tab-label">Waxing</div></div>
+                <div class="services-tab" data-category="makeup" style="background-image:url('service-makeup.png');"><div class="tab-label">Makeup</div></div>
+                <div class="services-tab" data-category="body" style="background-image:url('service-body.png');"><div class="tab-label">Body Polishing</div></div>
+            </div>
+            </div>
+
+            <div class="services-panel visible" id="panelHair" data-aos="fade-up" data-aos-delay="150">
+                <div class="panel-title"><span class="pt-icon">💇‍♀️</span> Hair Services</div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Hair Spa</span><span class="si-price">₹600</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Nourishing treatment for healthy, shiny hair.</div></div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Straight Cut</span><span class="si-price">₹199</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Classic straight cut for a clean look.</div></div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">U Cut</span><span class="si-price">₹199</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">U-shaped cut for soft, layered fall.</div></div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">V Cut</span><span class="si-price">₹199</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">V-shaped cut for a dramatic look.</div></div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Front Layer Cut</span><span class="si-price">₹199</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Face-framing front layers.</div></div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Layer Cut</span><span class="si-price">₹299</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Full layered styling for volume.</div></div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Step Cut</span><span class="si-price">₹299</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Stepped layers for a trendy look.</div></div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Butterfly Haircut</span><span class="si-price">₹399</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Butterfly-inspired layered cut.</div></div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Advanced Haircut</span><span class="si-price">₹499</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Premium precision haircut by expert stylist.</div></div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Permanent Hair Smoothening</span><span class="si-price">According to hair length</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Long-lasting smooth &amp; sleek straight hair.</div></div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Global Hair Color</span><span class="si-price">According to hair length</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Full head color application.</div></div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">One Strip Highlighting</span><span class="si-price">₹200</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Single streak of highlights.</div></div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Temporary Straightening (Ironing)</span><span class="si-price">₹500</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Heat-based straightening with iron.</div></div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Temporary Straightening (Curly)</span><span class="si-price">₹500</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Curly to straight blow-dry styling.</div></div>
+            </div>
+
+            <div class="services-panel" id="panelBleach" data-aos="fade-up" data-aos-delay="150">
+                <div class="panel-title"><span class="pt-icon">✨</span> Bleach</div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Fem Bleach</span><span class="si-price">₹150</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Gentle bleach for sensitive skin.</div></div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Oxy Bleach</span><span class="si-price">₹200</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Oxygen-based light bleach.</div></div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Gold Bleach</span><span class="si-price">₹200</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Gold-infused premium bleach.</div></div>
+            </div>
+
+            <div class="services-panel" id="panelThreading" data-aos="fade-up" data-aos-delay="150">
+                <div class="panel-title"><span class="pt-icon">✂️</span> Threading</div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Forehead</span><span class="si-price">₹10</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Neat forehead threading.</div></div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Upper Lips</span><span class="si-price">₹10</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Quick upper lip threading.</div></div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Eyebrow</span><span class="si-price">₹30</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Perfectly shaped eyebrows.</div></div>
+            </div>
+
+            <div class="services-panel" id="panelFacial" data-aos="fade-up" data-aos-delay="150">
+                <div class="panel-title"><span class="pt-icon">🧴</span> Facial</div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Fruit Cleanup</span><span class="si-price">₹300</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Refreshing fruit-based deep cleanse.</div></div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Papaya Cleanup</span><span class="si-price">₹300</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Papaya enzyme cleansing treatment.</div></div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Gold Cleanup</span><span class="si-price">₹300</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Gold-infused facial cleanse.</div></div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Diamond Cleanup</span><span class="si-price">₹400</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Diamond dust exfoliating cleanup.</div></div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Fruit Facial</span><span class="si-price">₹500</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Natural fruit-based facial treatment.</div></div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Papaya Facial</span><span class="si-price">₹500</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Papaya nourishing facial.</div></div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Gold Facial</span><span class="si-price">₹600</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Luxurious gold facial for glowing skin.</div></div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Diamond Facial</span><span class="si-price">₹700</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Diamond microdermabrasion facial.</div></div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Aroma Facial</span><span class="si-price">₹1,000</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Aromatherapy facial for relaxation.</div></div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">O3+ Facial</span><span class="si-price">₹3,000</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Advanced O3+ oxygen facial.</div></div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Raga Facial</span><span class="si-price">₹3,000</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Herbal Raga facial treatment.</div></div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Acne Treatment</span><span class="si-price">₹1,500</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Targeted acne control treatment.</div></div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Anti-Aging Facial</span><span class="si-price">₹1,500</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Age-defying facial for youthful skin.</div></div>
+            </div>
+
+            <div class="services-panel" id="panelWaxing" data-aos="fade-up" data-aos-delay="150">
+                <div class="panel-title"><span class="pt-icon">🪒</span> Waxing</div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Upper Lips</span><span class="si-price">₹30</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Quick upper lip wax.</div></div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Forehead</span><span class="si-price">₹40</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Forehead waxing.</div></div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Underarms</span><span class="si-price">₹150</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Underarm waxing.</div></div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Full Face</span><span class="si-price">₹150</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Complete face wax.</div></div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Half Hand</span><span class="si-price">₹150</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Half arm waxing.</div></div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Full Hand</span><span class="si-price">₹200</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Full arm waxing.</div></div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Half Leg</span><span class="si-price">₹200</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Half leg waxing.</div></div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Full Leg</span><span class="si-price">₹250</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Complete leg waxing.</div></div>
+            </div>
+
+            <div class="services-panel" id="panelMakeup" data-aos="fade-up" data-aos-delay="150">
+                <div class="panel-title"><span class="pt-icon">💄</span> Makeup</div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Party Makeup</span><span class="si-price">₹2,000</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Glam party look.</div></div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Engagement Makeup</span><span class="si-price">₹6,000</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Elegant engagement look.</div></div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Bridal Makeup</span><span class="si-price">₹10,000</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Complete bridal makeup.</div></div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Only Hairstyle</span><span class="si-price">₹500</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Professional hairstyling only.</div></div>
+            </div>
+
+            <div class="services-panel" id="panelBody" data-aos="fade-up" data-aos-delay="150">
+                <div class="panel-title"><span class="pt-icon">🌸</span> Body Polishing</div>
+                <div class="service-item"><button class="service-item-btn"><span class="si-name">Full Body Polishing</span><span class="si-price">₹3,000</span><span class="si-arrow"><i class="fas fa-chevron-down"></i></span></button><div class="service-item-desc">Complete body exfoliation &amp; glow treatment.</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== GALLERY ====== -->
+    <section class="gallery section" id="gallery">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">Gallery</span>
+                <h2 class="section-title">Our <span class="highlight">Work</span></h2>
+                <div class="divider"><span></span></div>
+            </div>
+            <div class="gallery-admin-bar" id="galleryAdminBar" style="display:none;">
+                <button class="admin-btn upload-btn" id="uploadBtn"><i class="fas fa-upload"></i> Upload Images</button>
+                <button class="admin-btn delete-btn" id="deleteBtn"><i class="fas fa-trash-alt"></i> Delete Selected</button>
+                <input type="file" id="fileInput" accept="image/*" multiple style="display:none;" />
+            </div>
+            <div class="gallery-grid" id="galleryGrid"></div>
+        </div>
+    </section>
+
+    <!-- ====== REVIEWS ====== -->
+    <section class="reviews section" id="reviews">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="reviews-header">
+                    <span class="emoji-big">💅</span>
+                    <h2 class="section-title"><span class="highlight">Glam</span> &amp; Grow</h2>
+                </div>
+                <div class="divider"><span></span></div>
+                <p class="section-desc">Hear what our beautiful clients have to say about their experience.</p>
+            </div>
+            <div class="reviews-grid" id="reviewsGrid"></div>
+            <div class="write-review-toggle">
+                <button class="btn-write-review" id="writeReviewBtn"><i class="fas fa-pen"></i> Write a Review</button>
+            </div>
+            <div class="review-form-wrapper" id="reviewFormWrapper">
+                <h3>Share Your Experience 💕</h3>
+                <form class="review-form" id="reviewForm">
+                    <div class="form-group"><label>Your Rating</label><div class="star-rating" id="starRating"><span data-star="1">★</span><span data-star="2">★</span><span data-star="3">★</span><span data-star="4">★</span><span data-star="5">★</span></div></div>
+                    <div class="form-group"><label for="reviewText">Your Review</label><textarea id="reviewText" rows="4" placeholder="Tell us about your experience..." required></textarea></div>
+                    <button type="submit" class="btn-primary" style="width:100%;justify-content:center;">Submit Review <i class="fas fa-heart"></i></button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== REWARDS ====== -->
+    <section class="rewards section" id="rewards">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">Rewards</span>
+                <h2 class="section-title">Your <span class="highlight">Reward</span> Points</h2>
+                <div class="divider"><span></span></div>
+                <p class="section-desc">Earn points on every service and redeem them for exciting discounts!</p>
+            </div>
+            <div class="rewards-dashboard" id="rewardsDashboard" data-aos="fade-up">
+                <div class="rewards-card" id="rewardsSummary">
+                    <div class="rewards-points-display">
+                        <div class="rp-number" id="rpDisplay">0</div>
+                        <div class="rp-label">Reward Points</div>
+                    </div>
+                    <div class="rewards-progress-bar"><div class="rp-fill" id="rpProgress" style="width:0%"></div></div>
+                    <div class="rewards-tier" id="rpTier">💰 <strong>Silver Tier</strong> &mdash; Earn more points to unlock bigger discounts!</div>
+                </div>
+                <div class="rewards-card">
+                    <h3 style="font-family:var(--font-heading);font-size:20px;font-weight:700;margin-bottom:16px;">🎁 Available Discounts</h3>
+                    <div class="rewards-vouchers" id="rewardsVouchers"></div>
+                </div>
+                <div class="rewards-card">
+                    <h3 style="font-family:var(--font-heading);font-size:20px;font-weight:700;margin-bottom:16px;">📜 Points History</h3>
+                    <div class="points-history" id="pointsHistory"><div class="ph-empty">No activity yet. Start earning points by booking services!</div></div>
+                </div>
+                <button class="rew-admin-toggle" id="rewAdminToggle" style="display:none;"><i class="fas fa-cog"></i> Manage Rewards (Admin)</button>
+                <div class="rewards-admin-panel" id="rewardsAdminPanel">
+                    <h3>⚙️ Rewards Settings</h3>
+                    <div class="rew-admin-section">
+                        <h4>Points Per Service</h4>
+                        <div id="rewPointsPerServiceList"></div>
+                        <div class="form-row-edit" style="margin-top:10px;">
+                            <select id="rewPpsCat">
+                                <option value="hair-services">Hair Services</option>
+                                <option value="bleach">Bleach</option>
+                                <option value="threading">Threading</option>
+                                <option value="facial">Facial</option>
+                                <option value="waxing">Waxing</option>
+                                <option value="makeup">Makeup</option>
+                                <option value="body-polishing">Body Polishing</option>
+                            </select>
+                            <input type="number" id="rewPpsVal" placeholder="Points" min="1" />
+                            <button class="btn-rew" id="rewPpsBtn">Set</button>
+                        </div>
+                    </div>
+                    <div class="rew-admin-section">
+                        <h4>Discount Thresholds</h4>
+                        <div id="rewThresholdList"></div>
+                        <div class="form-row-edit" style="margin-top:10px;">
+                            <input type="number" id="rewThreshPts" placeholder="Points needed" min="1" />
+                            <input type="number" id="rewThreshDisc" placeholder="Discount %" min="1" max="100" />
+                            <button class="btn-rew" id="rewThreshBtn">Add</button>
+                        </div>
+                    </div>
+                    <div class="rew-admin-section">
+                        <h4>Manage Customer Points</h4>
+                        <div class="form-row-edit">
+                            <select id="rewCustSelect"></select>
+                            <input type="number" id="rewCustPts" placeholder="Points" />
+                            <button class="btn-rew" id="rewCustAddBtn">➕ Add</button>
+                            <button class="btn-rew-outline" id="rewCustSubBtn">➖ Subtract</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== REQUESTS ====== -->
+    <section class="requests section" id="requests">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">Admin Panel</span>
+                <h2 class="section-title">Callback <span class="highlight">Requests</span></h2>
+                <div class="divider"><span></span></div>
+                <p class="section-desc">View all callback requests received from customers.</p>
+            </div>
+            <div class="requests-list" id="requestsList">
+                <div class="requests-empty"><i class="fas fa-inbox"></i><p>No callback requests yet.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== CALLBACK ====== -->
+    <section class="callback section" id="callback">
+        <div class="container">
+            <div class="callback-wrapper">
+                <div class="callback-content" data-aos="fade-right">
+                    <span class="section-tag">Get in Touch</span>
+                    <h2 class="section-title">Request a <span class="highlight">Callback</span></h2>
+                    <div class="divider left"><span></span></div>
+                    <p class="callback-desc">Leave your details and our team will get back to you shortly to schedule your appointment or answer any questions.</p>
+                    <div class="callback-info">
+                        <p><i class="fas fa-phone-alt"></i> +91 8084740703</p>
+                        <p><i class="fas fa-phone-alt"></i> +91 9525721217</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Patna, India</p>
+                    </div>
+                </div>
+                <div class="callback-form" data-aos="fade-left">
+                    <form id="callbackForm">
+                        <div class="form-row">
+                            <div class="form-group floating-label"><input type="text" id="cbName" placeholder=" " required /><label for="cbName">Your Name</label></div>
+                            <div class="form-group floating-label"><input type="tel" id="cbPhone" placeholder=" " required /><label for="cbPhone">Phone Number</label></div>
+                        </div>
+                        <div class="form-group"><label for="cbService">Service Interested In</label>
+                            <select id="cbService">
+                                <option value="">Select a service</option>
+                                <option value="hair-services">Hair Services</option>
+                                <option value="bleach">Bleach</option>
+                                <option value="threading">Threading</option>
+                                <option value="facial">Facial</option>
+                                <option value="waxing">Waxing</option>
+                                <option value="makeup">Makeup</option>
+                                <option value="body-polishing">Body Polishing</option>
+                            </select>
+                        </div>
+                        <div class="form-group floating-label"><textarea id="cbMessage" rows="3" placeholder=" "></textarea><label for="cbMessage">Message (Optional)</label></div>
+                        <button type="submit" class="btn-primary btn-submit"><span>Request Callback</span><i class="fas fa-arrow-right"></i></button>
+                    </form>
+                    <div class="form-success" id="callbackSuccess">
+                        <i class="fas fa-check-circle"></i><p>Thank you! We'll call you back shortly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== CONTACT ====== -->
+    <section class="contact section" id="contact">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">Contact</span>
+                <h2 class="section-title">Find <span class="highlight">Us</span></h2>
+                <div class="divider"><span></span></div>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-card" data-aos="fade-up" data-aos-delay="50"><div class="contact-icon"><i class="fas fa-phone-alt"></i></div><h4>Call Us</h4><p>+91 8084740703<br/>+91 9525721217</p></div>
+                <div class="contact-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="contact-icon"><i class="fab fa-instagram"></i></div>
+                    <h4>Connect on Insta</h4>
+                    <a href="https://www.instagram.com/beautysalon91099?utm_source=qr&amp;igsh=MWM0Zms5YTU0c2VyNg==" target="_blank" class="insta-link"><i class="fab fa-instagram"></i> @beautysalon91099</a>
+                </div>
+                <div class="contact-card location-card" data-aos="fade-up" data-aos-delay="150" onclick="window.open('https://maps.app.goo.gl/dGPAwEuaMYJ2j87bA','_blank')" style="cursor:pointer;" title="Open location in Google Maps">
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <h4>Visit Us</h4>
+                    <p>📍 Patna, India</p>
+                    <p style="font-size:12px;color:var(--primary);margin-top:6px;">Tap to open in Maps <i class="fas fa-external-link-alt"></i></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== FOOTER ====== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand"><a href="#" class="logo"><span class="logo-beauty">Beauty</span><span class="logo-salon">Salon</span></a><p>Where every woman deserves to shine. Experience premium beauty services in a warm, luxurious environment.</p></div>
+                <div class="footer-links"><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#services">Services</a></li><li><a href="#offers">Offers</a></li><li><a href="#reviews">Reviews</a></li></ul></div>
+                <div class="footer-services"><h4>Services</h4><ul><li><a href="#services">Hair Care</a></li><li><a href="#services">Skin Care</a></li><li><a href="#services">Makeup</a></li><li><a href="#services">Nail Art</a></li><li><a href="#services">Bridal Packages</a></li></ul></div>
+                <div class="footer-social">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/beautysalon91099?utm_source=qr&amp;igsh=MWM0Zms5YTU0c2VyNg==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://maps.app.goo.gl/dGPAwEuaMYJ2j87bA" target="_blank" aria-label="Location" class="location-link"><span class="location-emoji">📍</span></a>
+                    </div>
+                    <p class="footer-address"><i class="fas fa-map-marker-alt"></i> Patna, India</p>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 Beauty Salon. All rights reserved.</p></div>
+        </div>
+    </footer>
+
+    <button class="scroll-top" id="scrollTop"><i class="fas fa-chevron-up"></i></button>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="frontend-api.js"></script>
+<script>
+AOS.init({ duration:800, easing:'ease-out-cubic', once:true, offset:80, disable:'mobile' });
+
+function showToast(m,t){const c=document.getElementById('toastContainer'),i={success:'fa-check-circle',error:'fa-times-circle',info:'fa-info-circle'},o=document.createElement('div');o.className='toast '+t,o.innerHTML='<i class="fas '+(i[t]||'fa-info-circle')+'"></i> '+m,c.appendChild(o),setTimeout(()=>{o.parentNode&&o.remove()},3200);}
+
+/* Nav */
+const hamburger=document.getElementById('hamburger'),navMenu=document.getElementById('navMenu');
+hamburger.addEventListener('click',()=>{hamburger.classList.toggle('active');navMenu.classList.toggle('open');});
+function closeNav(){hamburger.classList.remove('active');navMenu.classList.remove('open');}
+document.querySelectorAll('.nav-link').forEach(l=>l.addEventListener('click',closeNav));
+// Dropdown menu links: close dropdown but keep mobile nav open (if it is open)
+document.querySelectorAll('.dropdown-menu a').forEach(l=>l.addEventListener('click',function(){
+  ddMenu.classList.remove('show');
+  ddToggle.classList.remove('active');
+}));
+
+/* Dropdown */
+const ddToggle=document.getElementById('dropdownToggle'),ddMenu=document.getElementById('dropdownMenu');
+ddToggle.addEventListener('click',(e)=>{e.stopPropagation();ddMenu.classList.toggle('show');ddToggle.classList.toggle('active');});
+document.addEventListener('click',(e)=>{if(!e.target.closest('.dropdown')){ddMenu.classList.remove('show');ddToggle.classList.remove('active');}});
+
+/* Active nav */
+const sections=document.querySelectorAll('section[id]'),navLinks=document.querySelectorAll('.nav-link');
+function updateActiveLink(){let c='';sections.forEach(s=>{const t=s.offsetTop-140,b=t+s.offsetHeight;if(window.scrollY>=t&&window.scrollY<b)c=s.getAttribute('id');});navLinks.forEach(l=>{l.classList.remove('active');if(l.getAttribute('href')==='#'+c)l.classList.add('active');});}
+window.addEventListener('scroll',updateActiveLink);
+
+const header=document.querySelector('.header'),progressBar=document.getElementById('progressBar');
+window.addEventListener('scroll',()=>{header.classList.toggle('scrolled',window.scrollY>50);progressBar.style.width=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100+'%';});
+
+const scrollTopBtn=document.getElementById('scrollTop');
+window.addEventListener('scroll',()=>scrollTopBtn.classList.toggle('show',window.scrollY>400));
+scrollTopBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+const hc=document.querySelector('.hero-content');
+window.addEventListener('scroll',()=>{const s=window.scrollY;if(s<window.innerHeight){hc.style.transform='translateY('+(s*0.15)+'px)';hc.style.opacity=1-(s/window.innerHeight)*0.5;}});
+document.querySelectorAll('.float-icon').forEach((icon,i)=>{window.addEventListener('scroll',()=>{icon.style.transform='translateY('+(window.scrollY*(0.05+i*0.02))+'px)';});});
+
+/* ====== SERVICES TABS & ACCORDION ====== */
+const serviceTabs = document.querySelectorAll('.services-tab');
+const servicePanels = {
+  hair: document.getElementById('panelHair'),
+  bleach: document.getElementById('panelBleach'),
+  threading: document.getElementById('panelThreading'),
+  facial: document.getElementById('panelFacial'),
+  waxing: document.getElementById('panelWaxing'),
+  makeup: document.getElementById('panelMakeup'),
+  body: document.getElementById('panelBody')
+};
+
+serviceTabs.forEach(tab => {
+  tab.addEventListener('click', function(){
+    serviceTabs.forEach(t => t.classList.remove('active'));
+    this.classList.add('active');
+    const cat = this.dataset.category;
+    Object.keys(servicePanels).forEach(k => {
+      servicePanels[k].classList.toggle('visible', k === cat);
+    });
+  });
+});
+
+// Accordion behavior for service items
+document.querySelectorAll('.service-item-btn').forEach(btn => {
+  btn.addEventListener('click', function(){
+    this.classList.toggle('active');
+    const desc = this.nextElementSibling;
+    desc.classList.toggle('open');
+  });
+});
+
+/* ====== OFFERS TABS ====== */
+const offerTabs=document.querySelectorAll('.offer-tab');
+const offerPanels={student:document.getElementById('offerStudent'),festive:document.getElementById('offerFestive'),special:document.getElementById('offerSpecial')};
+
+offerTabs.forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    offerTabs.forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    const type=tab.dataset.offer;
+    Object.keys(offerPanels).forEach(k=>{
+      offerPanels[k].classList.toggle('visible',k===type);
+    });
+    // If special offers tab, open side panel automatically
+    if(type==='special'){
+      openSidePanel();
+    }
+  });
+});
+
+/* ====== SIDE PANEL ====== */
+const sidePanel=document.getElementById('sidePanel');
+const sidePanelOverlay=document.getElementById('sidePanelOverlay');
+const sidePanelBody=document.getElementById('sidePanelBody');
+const sidePanelClose=document.getElementById('sidePanelClose');
+
+function openSidePanel(){
+  renderSidePanel();
+  sidePanel.classList.add('open');
+  sidePanelOverlay.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeSidePanel(){
+  sidePanel.classList.remove('open');
+  sidePanelOverlay.classList.remove('open');
+  document.body.style.overflow='';
+}
+
+sidePanelClose.addEventListener('click',closeSidePanel);
+sidePanelOverlay.addEventListener('click',closeSidePanel);
+document.getElementById('openSidePanelBtn').addEventListener('click',openSidePanel);
+document.getElementById('specialOffersTab').addEventListener('click',()=>{
+  // triggered above already via tab click
+});
+
+// Default offer data
+const defaultOffers={
+  'Skin Services':['1 Fruit facial free on 3+ facials','1 Gold facial free on 3 Gold facials','1 Fruit facial free on 3 Fruit Facials','25% OFF on 3+ D-Tans'],
+  'Hair Services':['25% OFF on Advanced Haircut','25% OFF on hair spa','25% OFF on Hair Spa treatment','25% OFF on Hair highlighting','25% OFF on Hair Global Color','25% OFF on Permanent &amp; Temporary Hair straightening'],
+  'Makeup Offers':['1 Party Makeup free on a Bridal Makeup','25% OFF on Engagement Makeup','10% OFF on Party Makeup']
+};
+
+function loadOffers(){
+  const data=localStorage.getItem('beautySalonSpecialOffers');
+  if(!data){
+    localStorage.setItem('beautySalonSpecialOffers',JSON.stringify(defaultOffers));
+    return JSON.parse(JSON.stringify(defaultOffers));
+  }
+  return JSON.parse(data);
+}
+
+function saveOffers(offers){
+  localStorage.setItem('beautySalonSpecialOffers',JSON.stringify(offers));
+}
+
+function renderSidePanel(){
+  const offers=loadOffers();
+  let html='';
+  const categories=Object.keys(offers);
+  categories.forEach((cat,i)=>{
+    const items=offers[cat]||[];
+    html+=`
+      <div class="offer-category">
+        <button class="offer-category-btn ${i===0?'active':''}" data-cat="${i}">
+          ${cat} <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="offer-category-body ${i===0?'open':''}">
+          <ul>${items.map(item=>'<li>'+item+'</li>').join('')}</ul>
+        </div>
+      </div>`;
+  });
+  sidePanelBody.innerHTML=html;
+
+  // Category toggle
+  document.querySelectorAll('.offer-category-btn').forEach(btn=>{
+    btn.addEventListener('click',function(){
+      this.classList.toggle('active');
+      const body=this.nextElementSibling;
+      body.classList.toggle('open');
+    });
+  });
+}
+
+// ====== EDIT OFFERS (Admin) ======
+let currentOffers={};
+
+function renderEditOffers(){
+  const offers=loadOffers();
+  currentOffers=offers;
+  const container=document.getElementById('editOffersList');
+  let html='';
+  const cats=Object.keys(offers);
+  cats.forEach(cat=>{
+    html+='<div style="margin-bottom:16px;"><strong style="color:var(--primary);font-size:14px;">'+cat+'</strong>';
+    (offers[cat]||[]).forEach((item,i)=>{
+      html+=`
+        <div class="edit-offer-row">
+          <span class="eo-tag">${cat}</span>
+          <span class="eo-text">${item}</span>
+          <button class="eo-del" data-category="${cat}" data-index="${i}"><i class="fas fa-times"></i></button>
+        </div>`;
+    });
+    html+='</div>';
+  });
+  container.innerHTML=html;
+
+  // Delete handlers
+  container.querySelectorAll('.eo-del').forEach(btn=>{
+    btn.addEventListener('click',function(){
+      const cat=this.dataset.category;
+      const idx=parseInt(this.dataset.index);
+      if(confirm('Delete this offer?')){
+        const o=loadOffers();
+        o[cat].splice(idx,1);
+        saveOffers(o);
+        renderEditOffers();
+        showToast('Offer deleted successfully!','info');
+      }
+    });
+  });
+}
+
+// Toggle edit panel
+document.getElementById('editOffersBtn').addEventListener('click',function(){
+  const panel=document.getElementById('editOffersPanel');
+  panel.classList.toggle('visible');
+  if(panel.classList.contains('visible')){
+    renderEditOffers();
+    this.innerHTML='<i class="fas fa-times"></i> Close Editor';
+  } else {
+    this.innerHTML='<i class="fas fa-edit"></i> Edit Offers';
+  }
+});
+
+// Add new offer
+document.getElementById('addOfferBtn').addEventListener('click',function(){
+  const cat=document.getElementById('addOfferCategory').value;
+  const text=document.getElementById('addOfferText').value.trim();
+  if(!text){alert('Please enter an offer description.');return;}
+  const o=loadOffers();
+  if(!o[cat]) o[cat]=[];
+  o[cat].push(text);
+  saveOffers(o);
+  document.getElementById('addOfferText').value='';
+  renderEditOffers();
+  showToast('Offer added successfully!','success');
+});
+
+// ====== OFFER TAB INIT ======
+// Show student by default, set special to not trigger panel on initial load
+// We handle special separately
+
+/* ====== USER SYSTEM ====== */
+let currentUser=null,userRole=null,selectedLoginRole='customer';
+function loadUsers(){const d=localStorage.getItem('beautySalonUsers');if(!d){const e={admin:{password:'admin123',role:'admin'},customer:{password:'customer123',role:'customer'}};localStorage.setItem('beautySalonUsers',JSON.stringify(e));return e;}return JSON.parse(d);}
+function saveUsers(u){localStorage.setItem('beautySalonUsers',JSON.stringify(u));}
+function loadSession(){const s=localStorage.getItem('beautySalonSession');if(s){const d=JSON.parse(s);currentUser=d.username;userRole=d.role;updateUIForLogin();}}
+function saveSession(u,r){currentUser=u;userRole=r;localStorage.setItem('beautySalonSession',JSON.stringify({username:u,role:r}));updateUIForLogin();}
+function clearSession(){currentUser=null;userRole=null;localStorage.removeItem('beautySalonSession');updateUIForLogin();}
+function updateUIForLogin(){
+  const dot=document.getElementById('userDot'),st=document.getElementById('userStatusText'),bt=document.getElementById('loginBtnText'),ic=document.getElementById('loginIcon'),ab=document.getElementById('galleryAdminBar'),rs=document.getElementById('requests'),rn=document.getElementById('requestsNavLink'),eo=document.getElementById('editOffersBtn'),rw=document.getElementById('rewardsNavLink'),rat=document.getElementById('rewAdminToggle'),eop=document.getElementById('editOffersPanel');
+  // Reset callback form
+  resetCallbackForm();
+  // ====== AGGRESSIVE RESET: Hide all admin-only elements first ======
+  if(ab) ab.style.display='none';
+  if(rs) rs.classList.remove('visible');
+  if(rn) rn.style.display='none';
+  if(rw) rw.style.display='none';
+  if(eo) eo.style.display='none';
+  if(rat) rat.style.display='none';
+  if(eop) eop.classList.remove('visible');
+  document.querySelectorAll('.gallery-item').forEach(i=>i.classList.remove('show-delete'));
+  // Remove any open admin panels
+  document.querySelectorAll('.edit-offers-panel.visible').forEach(p=>p.classList.remove('visible'));
+  document.querySelectorAll('.rewards-admin-panel.visible').forEach(p=>p.classList.remove('visible'));
+  // ====== Now apply correct state ======
+  if(currentUser){
+    dot.className='user-dot online';st.textContent='Logged in as '+currentUser+(userRole==='admin'?' (Admin)':'');bt.textContent='Logout';ic.className='fas fa-sign-out-alt';
+    rw.style.display='flex';
+    renderRewardsDashboard();
+    if(userRole==='admin'){ab.style.display='flex';rs.classList.add('visible');rn.style.display='flex';eo.style.display='inline-flex';rat.style.display='inline-flex';document.querySelectorAll('.gallery-item').forEach(i=>{if(i.dataset.type!=='empty')i.classList.add('show-delete');});renderRequests();renderEditOffers();renderRewardsAdmin();}
+    else{document.querySelectorAll('.gallery-item').forEach(i=>i.classList.remove('show-delete'));}
+  } else {
+    dot.className='user-dot offline';st.textContent='Not logged in';bt.textContent='Login';ic.className='fas fa-sign-in-alt';
+  }
+}
+const loginModal=document.getElementById('loginModal'),closeLoginModal=document.getElementById('closeLoginModal');
+function openLoginModal(){loginModal.classList.add('open');document.body.style.overflow='hidden';resetLoginModal();}
+function closeLoginModalFn(){loginModal.classList.remove('open');document.body.style.overflow='';}
+closeLoginModal.addEventListener('click',closeLoginModalFn);
+loginModal.addEventListener('click',(e)=>{if(e.target===loginModal)closeLoginModalFn();});
+function resetLoginModal(){
+  document.getElementById('loginStep1').classList.add('visible');
+  ['loginStepAdmin','loginStepLogin','loginStepSignup'].forEach(id=>document.getElementById(id).classList.remove('visible'));
+  ['loginError','adminCodeError'].forEach(id=>document.getElementById(id).classList.remove('show'));
+  document.getElementById('signupError').style.display='none';document.getElementById('signupAdminCodeError').style.display='none';
+  var sg = document.getElementById('signupAdminCodeGroup'); if(sg) sg.style.display='none';
+  document.getElementById('loginSubtitle').textContent='Choose your role to continue';
+  document.getElementById('loginForm').reset();document.getElementById('signupForm').reset();
+  selectedLoginRole='customer';
+  document.querySelectorAll('.role-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('roleCustomer').classList.add('active');
+}
+document.querySelectorAll('.role-btn').forEach(b=>{b.addEventListener('click',function(){document.querySelectorAll('.role-btn').forEach(x=>x.classList.remove('active'));this.classList.add('active');selectedLoginRole=this.dataset.role;});});
+document.getElementById('roleNextBtn').addEventListener('click',()=>{
+  if(selectedLoginRole==='admin'){document.getElementById('loginStep1').classList.remove('visible');document.getElementById('loginStepAdmin').classList.add('visible');document.getElementById('loginSubtitle').textContent='Admin verification required';}
+  else{document.getElementById('loginStep1').classList.remove('visible');document.getElementById('loginStepLogin').classList.add('visible');document.getElementById('loginSubtitle').textContent='Customer Login';}
+});
+document.getElementById('backFromAdmin').addEventListener('click',()=>{document.getElementById('loginStepAdmin').classList.remove('visible');document.getElementById('loginStep1').classList.add('visible');document.getElementById('loginSubtitle').textContent='Choose your role to continue';document.getElementById('adminCodeError').classList.remove('show');});
+document.getElementById('backToRole').addEventListener('click',()=>{document.getElementById('loginStepLogin').classList.remove('visible');document.getElementById('loginStep1').classList.add('visible');document.getElementById('loginSubtitle').textContent='Choose your role to continue';document.getElementById('loginError').classList.remove('show');});
+document.getElementById('adminCodeBtn').addEventListener('click',()=>{
+  const code=document.getElementById('adminCode').value.trim();
+  if(code==='Gwg#99'){document.getElementById('loginStepAdmin').classList.remove('visible');document.getElementById('loginStepLogin').classList.add('visible');document.getElementById('loginSubtitle').textContent='Admin Login';document.getElementById('adminCodeError').classList.remove('show');}
+  else document.getElementById('adminCodeError').classList.add('show');
+});
+document.getElementById('adminCode').addEventListener('keydown',(e)=>{if(e.key==='Enter')document.getElementById('adminCodeBtn').click();});
+document.getElementById('loginForm').addEventListener('submit',(e)=>{
+  e.preventDefault();const users=loadUsers(),u=document.getElementById('loginUser').value.trim(),p=document.getElementById('loginPass').value.trim();
+  if(users[u]&&users[u].password===p&&users[u].role===selectedLoginRole){saveSession(u,users[u].role);closeLoginModalFn();showToast('Logged in successfully! Welcome back, '+u+' 🎉','success');checkReviewIntent();}
+  else document.getElementById('loginError').classList.add('show');
+});
+document.getElementById('signupLink').addEventListener('click',(e)=>{e.preventDefault();document.getElementById('loginStep1').classList.remove('visible');document.getElementById('loginStepSignup').classList.add('visible');document.getElementById('loginSubtitle').textContent='Create a new account';});
+document.getElementById('backFromSignup').addEventListener('click',()=>{document.getElementById('loginStepSignup').classList.remove('visible');document.getElementById('loginStep1').classList.add('visible');document.getElementById('loginSubtitle').textContent='Choose your role to continue';});
+document.getElementById('backToLoginLink').addEventListener('click',(e)=>{e.preventDefault();document.getElementById('loginStepSignup').classList.remove('visible');document.getElementById('loginStep1').classList.add('visible');document.getElementById('loginSubtitle').textContent='Choose your role to continue';});
+function reattachSignupEvents(){
+  const sr = document.getElementById('signupRole');
+  if(sr) sr.addEventListener('change',function(){document.getElementById('signupAdminCodeGroup').style.display=this.value==='admin'?'block':'none';});
+}
+// Reattach immediately since we cloned the form
+reattachSignupEvents();
+// The login, signup, and logout handlers have been replaced in the API BOOT section below
+function checkReviewIntent(){if(sessionStorage.getItem('reviewIntent')==='true'&&currentUser){sessionStorage.removeItem('reviewIntent');document.getElementById('reviewFormWrapper').classList.add('visible');document.getElementById('writeReviewBtn').innerHTML='<i class="fas fa-times"></i> Cancel';}}
+
+/* ====== CALLBACK ====== */
+const callbackForm=document.getElementById('callbackForm'),callbackSuccess=document.getElementById('callbackSuccess');
+function resetCallbackForm(){
+  callbackForm.style.display='';callbackSuccess.style.display='none';
+  callbackForm.reset();const btn=callbackForm.querySelector('.btn-submit');
+  btn.disabled=false;btn.innerHTML='<span>Request Callback</span><i class="fas fa-arrow-right"></i>';
+}
+callbackForm.addEventListener('submit',(e)=>{
+  e.preventDefault();
+  if(!currentUser){openLoginModal();return;}
+  const requests=JSON.parse(localStorage.getItem('beautySalonRequests')||'[]');
+  requests.push({id:Date.now(),name:document.getElementById('cbName').value.trim(),phone:document.getElementById('cbPhone').value.trim(),service:document.getElementById('cbService').value||'Not specified',message:document.getElementById('cbMessage').value.trim()||'—',date:new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}),from:currentUser});
+  localStorage.setItem('beautySalonRequests',JSON.stringify(requests));
+  // Award reward points
+  const serviceKey=document.getElementById('cbService').value;
+  const cfg=loadRewardsConfig();
+  const ptsEarned=cfg.pointsPerService[serviceKey]||10;
+  addPoints(currentUser,ptsEarned,'Booked '+serviceKey+' service');
+  renderRewardsDashboard();
+  if(userRole==='admin')renderRequests();
+  const btn=callbackForm.querySelector('.btn-submit');btn.disabled=true;btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Sending...';
+  setTimeout(()=>{callbackForm.style.display='none';callbackSuccess.style.display='block';callbackSuccess.style.animation='fadeInUp 0.6s ease';showToast('Callback request sent! We\'ll call you back shortly 📞','success');},1500);
+});
+
+/* ====== REQUESTS ====== */
+function renderRequests(){const list=document.getElementById('requestsList'),requests=JSON.parse(localStorage.getItem('beautySalonRequests')||'[]');if(requests.length===0){list.innerHTML='<div class="requests-empty"><i class="fas fa-inbox"></i><p>No callback requests yet.</p></div>';return;}list.innerHTML='';requests.slice().reverse().forEach(r=>{const card=document.createElement('div');card.className='request-card';card.innerHTML='<span class="req-badge">New</span><div class="req-header"><span class="req-name">'+r.name+'</span><span class="req-phone">'+r.phone+'</span></div><span class="req-service"><i class="fas fa-tag"></i> '+r.service+'</span><div class="req-msg">'+r.message+'</div><div class="req-date">'+r.date+' &middot; by '+r.from+'</div>';list.appendChild(card);});}
+
+/* ====== REVIEWS ====== */
+let selectedRating=0;const reviewsGrid=document.getElementById('reviewsGrid'),reviewFormWrapper=document.getElementById('reviewFormWrapper'),writeReviewBtn=document.getElementById('writeReviewBtn'),reviewForm=document.getElementById('reviewForm'),reviewText=document.getElementById('reviewText'),starRating=document.getElementById('starRating');
+function loadReviews(){const reviews=JSON.parse(localStorage.getItem('beautySalonReviews')||'[]');reviewsGrid.innerHTML='';if(reviews.length===0){reviewsGrid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-light);"><i class="fas fa-star" style="font-size:40px;display:block;margin-bottom:12px;opacity:0.3;"></i><p>No reviews yet. Be the first to share your experience!</p></div>';return;}reviews.forEach(r=>{const c=document.createElement('div');c.className='review-card';let ss='';for(let i=0;i<r.rating;i++)ss+='★';c.innerHTML='<div class="review-stars">'+ss+'</div><p class="review-text">"'+r.text+'"</p><p class="review-author">— '+r.author+'</p><p class="review-date">'+r.date+'</p>';reviewsGrid.appendChild(c);});AOS.refresh();}
+starRating.querySelectorAll('span').forEach(star=>{star.addEventListener('click',function(){selectedRating=parseInt(this.dataset.star);starRating.querySelectorAll('span').forEach(s=>s.classList.toggle('active',parseInt(s.dataset.star)<=selectedRating));});star.addEventListener('mouseenter',function(){const v=parseInt(this.dataset.star);starRating.querySelectorAll('span').forEach(s=>s.classList.toggle('active',parseInt(s.dataset.star)<=v));});star.addEventListener('mouseleave',()=>{starRating.querySelectorAll('span').forEach(s=>s.classList.toggle('active',parseInt(s.dataset.star)<=selectedRating));});});
+writeReviewBtn.addEventListener('click',()=>{if(!currentUser){sessionStorage.setItem('reviewIntent','true');openLoginModal();return;}reviewFormWrapper.classList.toggle('visible');writeReviewBtn.innerHTML=reviewFormWrapper.classList.contains('visible')?'<i class="fas fa-times"></i> Cancel':'<i class="fas fa-pen"></i> Write a Review';});
+reviewForm.addEventListener('submit',(e)=>{e.preventDefault();if(selectedRating===0){alert('Please select a rating!');return;}const t=reviewText.value.trim();if(!t){alert('Please write your review!');return;}const reviews=JSON.parse(localStorage.getItem('beautySalonReviews')||'[]');reviews.unshift({id:Date.now(),author:currentUser==='admin'?'Admin':currentUser||'Customer',rating:selectedRating,text:t,date:new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})});localStorage.setItem('beautySalonReviews',JSON.stringify(reviews));reviewText.value='';selectedRating=0;starRating.querySelectorAll('span').forEach(s=>s.classList.remove('active'));reviewFormWrapper.classList.remove('visible');writeReviewBtn.innerHTML='<i class="fas fa-pen"></i> Write a Review';loadReviews();showToast('Your review has been posted! Thank you 💕','success');});
+
+/* ====== GALLERY ====== */
+const galleryGrid=document.getElementById('galleryGrid'),fileInput=document.getElementById('fileInput'),uploadBtn=document.getElementById('uploadBtn'),deleteBtn=document.getElementById('deleteBtn');
+function loadGallery(){const images=JSON.parse(localStorage.getItem('beautySalonGallery')||'[]');galleryGrid.innerHTML='';if(images.length===0){galleryGrid.innerHTML='<div class="gallery-item empty-state" data-type="empty"><i class="fas fa-image"></i><span>No images yet</span></div><div class="gallery-item empty-state" data-type="empty"><i class="fas fa-image"></i><span>No images yet</span></div><div class="gallery-item empty-state" data-type="empty"><i class="fas fa-image"></i><span>No images yet</span></div>';return;}images.forEach((d,i)=>{const item=document.createElement('div');item.className='gallery-item';item.dataset.index=i;if(currentUser&&userRole==='admin')item.classList.add('show-delete');item.innerHTML='<img src="'+d+'" alt="Gallery '+(i+1)+'" /><div class="gallery-overlay"><span>View</span></div><input type="checkbox" class="delete-checkbox" data-index="'+i+'" />';galleryGrid.appendChild(item);});}
+uploadBtn.addEventListener('click',()=>{if(currentUser&&userRole==='admin')fileInput.click();});
+fileInput.addEventListener('change',(e)=>{const files=e.target.files;if(!files.length)return;const images=JSON.parse(localStorage.getItem('beautySalonGallery')||'[]');let loaded=0;for(const file of files){if(!file.type.startsWith('image/'))continue;const r=new FileReader();r.onload=(ev)=>{images.push(ev.target.result);loaded++;if(loaded===files.length){localStorage.setItem('beautySalonGallery',JSON.stringify(images));loadGallery();if(currentUser&&userRole==='admin'){document.querySelectorAll('.gallery-item').forEach(i=>{if(i.dataset.type!=='empty')i.classList.add('show-delete');});}showToast(loaded+' image(s) uploaded successfully! 📸','success');}};r.readAsDataURL(file);}fileInput.value='';});
+deleteBtn.addEventListener('click',()=>{if(!currentUser||userRole!=='admin')return;const checked=document.querySelectorAll('.delete-checkbox:checked');if(checked.length===0){alert('Please select images to delete.');return;}if(!confirm('Delete '+checked.length+' selected image(s)?'))return;const images=JSON.parse(localStorage.getItem('beautySalonGallery')||'[]');const indices=[];checked.forEach(cb=>indices.push(parseInt(cb.dataset.index)));indices.sort((a,b)=>b-a);for(const idx of indices)images.splice(idx,1);localStorage.setItem('beautySalonGallery',JSON.stringify(images));loadGallery();if(currentUser&&userRole==='admin'){document.querySelectorAll('.gallery-item').forEach(i=>{if(i.dataset.type!=='empty')i.classList.add('show-delete');});}showToast('Selected image(s) deleted successfully! 🗑️','info');});
+
+/* ====== ABOUT SLIDESHOW ====== */
+let slideshowInterval = null;
+let currentSlide = 0;
+const totalSlides = 5;
+
+function goToSlide(index){
+  const slides = document.querySelectorAll('#aboutSlideshow .slide');
+  const dots = document.querySelectorAll('#slideshowDots .dot');
+  if (!slides.length) return;
+  slides.forEach(s => s.classList.remove('active'));
+  dots.forEach(d => d.classList.remove('active'));
+  slides[index].classList.add('active');
+  dots[index].classList.add('active');
+  currentSlide = index;
+}
+
+function startSlideshow(){
+  if (slideshowInterval) clearInterval(slideshowInterval);
+  if (totalSlides < 2) return;
+  slideshowInterval = setInterval(() => {
+    const next = (currentSlide + 1) % totalSlides;
+    goToSlide(next);
+  }, 4000);
+}
+
+// Attach dot click handlers
+document.querySelectorAll('#slideshowDots .dot').forEach(dot => {
+  dot.addEventListener('click', function(){
+    goToSlide(parseInt(this.dataset.index));
+    // Restart timer on manual click
+    if (slideshowInterval) {
+      clearInterval(slideshowInterval);
+      startSlideshow();
+    }
+  });
+});
+
+/* ====== REWARDS SYSTEM ====== */
+function getDefaultRewardsConfig(){
+  return {
+    pointsPerService: { 'hair-services':50, 'bleach':20, 'threading':10, 'facial':40, 'waxing':30, 'makeup':100, 'body-polishing':80 },
+    thresholds: [{ points:100, discount:5 }, { points:250, discount:10 }, { points:500, discount:20 }],
+    customerPoints: {},
+    customerHistory: {}
+  };
+}
+function loadRewardsConfig(){
+  const d=localStorage.getItem('beautySalonRewards');
+  if(!d){const def=getDefaultRewardsConfig();localStorage.setItem('beautySalonRewards',JSON.stringify(def));return JSON.parse(JSON.stringify(def));}
+  return JSON.parse(d);
+}
+function saveRewardsConfig(c){localStorage.setItem('beautySalonRewards',JSON.stringify(c));}
+function getCustomerPoints(username){
+  const c=loadRewardsConfig();
+  return c.customerPoints[username]||0;
+}
+function getCustomerHistory(username){
+  const c=loadRewardsConfig();
+  return c.customerHistory[username]||[];
+}
+function addPoints(username,pts,desc){
+  const c=loadRewardsConfig();
+  if(!c.customerPoints[username])c.customerPoints[username]=0;
+  c.customerPoints[username]+=pts;
+  if(!c.customerHistory[username])c.customerHistory[username]=[];
+  c.customerHistory[username].push({pts:'+'+pts,desc:desc,date:new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})});
+  saveRewardsConfig(c);
+}
+function subtractPoints(username,pts,desc){
+  const c=loadRewardsConfig();
+  if(!c.customerPoints[username])c.customerPoints[username]=0;
+  c.customerPoints[username]=Math.max(0,c.customerPoints[username]-pts);
+  if(!c.customerHistory[username])c.customerHistory[username]=[];
+  c.customerHistory[username].push({pts:'-'+pts,desc:desc,date:new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})});
+  saveRewardsConfig(c);
+}
+function renderRewardsDashboard(){
+  if(!currentUser)return;
+  const cfg=loadRewardsConfig();
+  const pts=getCustomerPoints(currentUser);
+  document.getElementById('rpDisplay').textContent=pts;
+  const maxThreshold=cfg.thresholds.length?cfg.thresholds[cfg.thresholds.length-1].points:500;
+  const pct=Math.min(100,(pts/maxThreshold)*100);
+  document.getElementById('rpProgress').style.width=pct+'%';
+  let tier='Bronze',nextNeed='';
+  cfg.thresholds.sort((a,b)=>a.points-b.points);
+  for(let i=cfg.thresholds.length-1;i>=0;i--){
+    if(pts>=cfg.thresholds[i].points){tier=cfg.thresholds[i].discount+'% OFF';nextNeed=i<cfg.thresholds.length-1?' — Next at '+cfg.thresholds[i+1].points+' pts':'';break;}
+  }
+  if(pts<cfg.thresholds[0].points){tier='Bronze';nextNeed=' — Need '+cfg.thresholds[0].points+' pts for rewards';}
+  document.getElementById('rpTier').innerHTML='💰 <strong>'+tier+'</strong>'+nextNeed;
+  // Vouchers
+  const vouchersDiv=document.getElementById('rewardsVouchers');
+  vouchersDiv.innerHTML='';
+  cfg.thresholds.sort((a,b)=>a.points-b.points);
+  // Track which ones have been claimed this session
+  let anyClaimable=false;
+  cfg.thresholds.forEach(t=>{
+    const canClaim=pts>=t.points;
+    const voucher=document.createElement('div');
+    voucher.className='reward-voucher'+(canClaim?' claimable':'');
+    voucher.innerHTML='<div class="voucher-discount">'+t.discount+'% OFF</div><div class="voucher-label">Discount Voucher</div><div class="voucher-need">'+t.points+' points needed</div><div class="voucher-badge">'+(canClaim?'Claim Now!':(pts>=t.points?'Claimed':'Locked'))+'</div>';
+    if(canClaim){
+      anyClaimable=true;
+      voucher.addEventListener('click',function(){
+        if(!confirm('Redeem '+t.discount+'% OFF voucher for '+t.points+' points?'))return;
+        subtractPoints(currentUser,t.points,'Redeemed '+t.discount+'% OFF voucher');
+        renderRewardsDashboard();
+        showToast('🎉 Voucher redeemed! You got '+t.discount+'% OFF on your next service!','success');
+      });
+    }
+    vouchersDiv.appendChild(voucher);
+  });
+  if(!anyClaimable&&pts>0){
+    // Show nearest next threshold
+  }
+  // History
+  const histDiv=document.getElementById('pointsHistory');
+  const history=getCustomerHistory(currentUser);
+  if(!history.length){histDiv.innerHTML='<div class="ph-empty">No activity yet. Start earning points by booking services!</div>';}
+  else{
+    histDiv.innerHTML='';
+    history.slice().reverse().slice(0,20).forEach(h=>{
+      const item=document.createElement('div');
+      item.className='ph-item';
+      const isPos=h.pts.startsWith('+');
+      item.innerHTML='<span class="ph-desc">'+h.desc+'</span><span class="ph-pts '+(isPos?'positive':'negative')+'">'+h.pts+' pts</span>';
+      histDiv.appendChild(item);
+    });
+  }
+}
+function renderRewardsAdmin(){
+  if(userRole!=='admin')return;
+  const cfg=loadRewardsConfig();
+  // Points per service list
+  const ppsDiv=document.getElementById('rewPointsPerServiceList');
+  ppsDiv.innerHTML='';
+  Object.keys(cfg.pointsPerService).forEach(k=>{
+    const row=document.createElement('div');row.className='edit-offer-row';
+    row.innerHTML='<span class="eo-tag">'+k+'</span><span class="eo-text">'+cfg.pointsPerService[k]+' pts</span>';
+    ppsDiv.appendChild(row);
+  });
+  // Thresholds list
+  const thDiv=document.getElementById('rewThresholdList');
+  thDiv.innerHTML='';
+  cfg.thresholds.sort((a,b)=>a.points-b.points);
+  cfg.thresholds.forEach((t,i)=>{
+    const row=document.createElement('div');row.className='edit-offer-row';
+    row.innerHTML='<span class="eo-text">'+t.points+' pts → '+t.discount+'% OFF</span><button class="eo-del" data-idx="'+i+'"><i class="fas fa-times"></i></button>';
+    row.querySelector('.eo-del').addEventListener('click',function(){
+      if(!confirm('Delete this threshold?'))return;
+      const c=loadRewardsConfig();c.thresholds.splice(parseInt(this.dataset.idx),1);
+      saveRewardsConfig(c);renderRewardsAdmin();showToast('Threshold deleted!','info');
+    });
+    thDiv.appendChild(row);
+  });
+  // Customer select
+  const custSel=document.getElementById('rewCustSelect');
+  const users=loadUsers();
+  custSel.innerHTML='';
+  Object.keys(users).forEach(u=>{
+    if(users[u].role==='customer'){
+      const opt=document.createElement('option');opt.value=u;
+      opt.textContent=u+' ('+(cfg.customerPoints[u]||0)+' pts)';
+      custSel.appendChild(opt);
+    }
+  });
+}
+document.getElementById('rewPpsBtn').addEventListener('click',function(){
+  const cat=document.getElementById('rewPpsCat').value;
+  const val=parseInt(document.getElementById('rewPpsVal').value);
+  if(!val||val<1){alert('Enter valid points');return;}
+  const cfg=loadRewardsConfig();cfg.pointsPerService[cat]=val;
+  saveRewardsConfig(cfg);renderRewardsAdmin();
+  document.getElementById('rewPpsVal').value='';
+  showToast('Points set for '+cat+'!','success');
+});
+document.getElementById('rewThreshBtn').addEventListener('click',function(){
+  const pts=parseInt(document.getElementById('rewThreshPts').value);
+  const disc=parseInt(document.getElementById('rewThreshDisc').value);
+  if(!pts||!disc||pts<1||disc<1||disc>100){alert('Enter valid values');return;}
+  const cfg=loadRewardsConfig();
+  cfg.thresholds.push({points:pts,discount:disc});
+  saveRewardsConfig(cfg);renderRewardsAdmin();
+  document.getElementById('rewThreshPts').value='';document.getElementById('rewThreshDisc').value='';
+  showToast('Threshold added!','success');
+});
+document.getElementById('rewCustAddBtn').addEventListener('click',function(){
+  const user=document.getElementById('rewCustSelect').value;
+  const pts=parseInt(document.getElementById('rewCustPts').value);
+  if(!user||!pts||pts<1){alert('Select customer and enter points');return;}
+  addPoints(user,pts,'Admin added points');
+  renderRewardsAdmin();renderRewardsDashboard();
+  document.getElementById('rewCustPts').value='';
+  showToast('Added '+pts+' pts to '+user+'!','success');
+});
+document.getElementById('rewCustSubBtn').addEventListener('click',function(){
+  const user=document.getElementById('rewCustSelect').value;
+  const pts=parseInt(document.getElementById('rewCustPts').value);
+  if(!user||!pts||pts<1){alert('Select customer and enter points');return;}
+  subtractPoints(user,pts,'Admin subtracted points');
+  renderRewardsAdmin();renderRewardsDashboard();
+  document.getElementById('rewCustPts').value='';
+  showToast('Subtracted '+pts+' pts from '+user+'!','info');
+});
+document.getElementById('rewAdminToggle').addEventListener('click',function(){
+  const panel=document.getElementById('rewardsAdminPanel');
+  panel.classList.toggle('visible');
+  if(panel.classList.contains('visible')){renderRewardsAdmin();this.innerHTML='<i class="fas fa-times"></i> Close Settings';}
+  else this.innerHTML='<i class="fas fa-cog"></i> Manage Rewards (Admin)';
+});
+
+/* ====== API BOOT: Connect to server for shared data ====== */
+let apiMode = false;
+
+// Flag to prevent original form handlers from running when API is active
+let apiHandlingLogin = false;
+
+async function bootAPI() {
+  await API.checkServer();
+  if (!API.getServerAvailable()) {
+    console.log('Server not available, using localStorage (local mode)');
+    return;
+  }
+  apiMode = true;
+  console.log('Connected to server! Data will be shared across all users.');
+  
+  // Restore session from token
+  const session = await API.verifyToken();
+  if (session) {
+    currentUser = session.username;
+    userRole = session.role;
+    // Also sync to localStorage for fallback
+    localStorage.setItem('beautySalonSession', JSON.stringify({username: session.username, role: session.role}));
+    updateUIForLogin();
+  }
+}
+
+// ====== INTERCEPT LOGIN FORM ======
+const loginFormEl = document.getElementById('loginForm');
+if (loginFormEl) {
+  // Remove ALL existing submit handlers by replacing the form
+  const newLoginForm = loginFormEl.cloneNode(true);
+  loginFormEl.parentNode.replaceChild(newLoginForm, loginFormEl);
+  
+  newLoginForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const u = document.getElementById('loginUser').value.trim();
+    const p = document.getElementById('loginPass').value.trim();
+    
+    if (apiMode) {
+      const result = await API.login(u, p, selectedLoginRole);
+      if (result.success) {
+        saveSession(u, result.role || selectedLoginRole);
+        closeLoginModalFn();
+        showToast('Logged in successfully! Welcome back, ' + u + ' 🎉', 'success');
+        checkReviewIntent();
+      } else {
+        document.getElementById('loginError').classList.add('show');
+      }
+    } else {
+      // Original localStorage logic
+      const users = loadUsers();
+      if (users[u] && users[u].password === p && users[u].role === selectedLoginRole) {
+        saveSession(u, users[u].role);
+        closeLoginModalFn();
+        showToast('Logged in successfully! Welcome back, ' + u + ' 🎉', 'success');
+        checkReviewIntent();
+      } else {
+        document.getElementById('loginError').classList.add('show');
+      }
+    }
+  });
+}
+
+// ====== INTERCEPT SIGNUP FORM ======
+const signupFormEl = document.getElementById('signupForm');
+if (signupFormEl) {
+  const newSignupForm = signupFormEl.cloneNode(true);
+  signupFormEl.parentNode.replaceChild(newSignupForm, signupFormEl);
+  
+  // CRITICAL: re-attach the role change listener to the NEW cloned form
+  // (the original listener was lost when the form was cloned)
+  const newSignupRole = document.getElementById('signupRole');
+  if (newSignupRole) {
+    newSignupRole.addEventListener('change', function(){
+      const grp = document.getElementById('signupAdminCodeGroup');
+      if (grp) grp.style.display = this.value === 'admin' ? 'block' : 'none';
+    });
+  }
+  // Also clear admin code error when typing
+  const codeInput = document.getElementById('signupAdminCode');
+  if (codeInput) {
+    codeInput.addEventListener('input', function(){
+      document.getElementById('signupAdminCodeError').style.display = 'none';
+    });
+  }
+  // Clear username-exists error when typing
+  const userInput = document.getElementById('signupUser');
+  if (userInput) {
+    userInput.addEventListener('input', function(){
+      document.getElementById('signupError').style.display = 'none';
+    });
+  }
+  
+  newSignupForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const u = document.getElementById('signupUser').value.trim();
+    const p = document.getElementById('signupPass').value.trim();
+    const r = document.getElementById('signupRole').value;
+    const code = document.getElementById('signupAdminCode').value.trim();
+    
+    if (r === 'admin' && code !== 'Gwg#99') {
+      document.getElementById('signupAdminCodeError').style.display = 'block';
+      return;
+    }
+    
+    if (apiMode) {
+      const result = await API.signup(u, p, r, code);
+      if (result.success) {
+        saveSession(u, r);
+        closeLoginModalFn();
+        showToast('Account created successfully! Welcome, ' + u + ' 🎉', 'success');
+        checkReviewIntent();
+      } else {
+        const errEl = document.getElementById('signupError');
+        if (result.message && result.message.indexOf('admin code') !== -1) {
+          const codeErr = document.getElementById('signupAdminCodeError');
+          if (codeErr) codeErr.style.display = 'block';
+        } else {
+          errEl.textContent = (result.message && result.message.indexOf('already exists') !== -1)
+            ? 'Username already exists. Please choose another.'
+            : 'Something went wrong. Please try again.';
+          errEl.style.display = 'block';
+        }
+      }
+    } else {
+      const users = loadUsers();
+      if (users[u]) {
+        document.getElementById('signupError').style.display = 'block';
+        return;
+      }
+      users[u] = { password: p, role: r };
+      saveUsers(users);
+      saveSession(u, r);
+      closeLoginModalFn();
+      showToast('Account created successfully! Welcome, ' + u + ' 🎉', 'success');
+      checkReviewIntent();
+    }
+  });
+}
+
+// ====== INTERCEPT LOGOUT BUTTON ======
+const logoutBtn = document.getElementById('loginLogoutBtn');
+if (logoutBtn) {
+  // Remove original handler by cloning
+  const newLogoutBtn = logoutBtn.cloneNode(true);
+  logoutBtn.parentNode.replaceChild(newLogoutBtn, logoutBtn);
+  
+  newLogoutBtn.addEventListener('click', async (e) => {
+    e.preventDefault();
+    document.getElementById('dropdownMenu').classList.remove('show');
+    document.getElementById('dropdownToggle').classList.remove('active');
+    if (currentUser) {
+      if (apiMode) {
+        await API.logout();
+      }
+      clearSession();
+      showToast('Logged out successfully. See you soon! 👋', 'info');
+    } else {
+      openLoginModal();
+    }
+  });
+}
+
+/* ====== SYNC FUNCTIONS: Pull data from server to localStorage ====== */
+
+/* ====== SYNC FUNCTIONS: Pull data from server to localStorage ====== */
+async function syncReviews() {
+  if (!apiMode) return;
+  const result = await API.getReviews();
+  if (result && Array.isArray(result)) {
+    localStorage.setItem('beautySalonReviews', JSON.stringify(result));
+  }
+}
+
+async function syncRequests() {
+  if (!apiMode) return;
+  const result = await API.getRequests();
+  if (result && Array.isArray(result)) {
+    localStorage.setItem('beautySalonRequests', JSON.stringify(result));
+  }
+}
+
+async function syncOffers() {
+  if (!apiMode) return;
+  const result = await API.getOffers();
+  if (result && typeof result === 'object') {
+    localStorage.setItem('beautySalonSpecialOffers', JSON.stringify(result));
+  }
+}
+
+async function syncRewards() {
+  if (!apiMode) return;
+  const result = await API.getRewards();
+  if (result && typeof result === 'object') {
+    localStorage.setItem('beautySalonRewards', JSON.stringify(result));
+  }
+}
+
+// Override review submission
+const _origReviewForm = document.getElementById('reviewForm');
+if (_origReviewForm) {
+  _origReviewForm.addEventListener('submit', async (e) => {
+    if (!apiMode) return;
+    e.preventDefault();
+    if (selectedRating === 0) { alert('Please select a rating!'); return; }
+    const t = document.getElementById('reviewText').value.trim();
+    if (!t) { alert('Please write your review!'); return; }
+    const author = currentUser === 'admin' ? 'Admin' : currentUser || 'Customer';
+    const result = await API.addReview(author, selectedRating, t);
+    if (result.success) {
+      document.getElementById('reviewText').value = '';
+      selectedRating = 0;
+      document.querySelectorAll('#starRating span').forEach(s => s.classList.remove('active'));
+      document.getElementById('reviewFormWrapper').classList.remove('visible');
+      document.getElementById('writeReviewBtn').innerHTML = '<i class="fas fa-pen"></i> Write a Review';
+      await syncReviews();
+      loadReviews();
+      showToast('Your review has been posted! Thank you 💕', 'success');
+    }
+  });
+}
+
+// Override callback submission
+const _origCallbackForm = document.getElementById('callbackForm');
+if (_origCallbackForm) {
+  _origCallbackForm.addEventListener('submit', async (e) => {
+    if (!apiMode) return;
+    e.preventDefault();
+    if (!currentUser) { openLoginModal(); return; }
+    const name = document.getElementById('cbName').value.trim();
+    const phone = document.getElementById('cbPhone').value.trim();
+    const service = document.getElementById('cbService').value || 'Not specified';
+    const message = document.getElementById('cbMessage').value.trim() || '—';
+    
+    const result = await API.addRequest(name, phone, service, message, currentUser);
+    if (result.success) {
+      await syncRequests();
+      if (userRole === 'admin') renderRequests();
+      
+      // Award points
+      const cfg = JSON.parse(localStorage.getItem('beautySalonRewards') || '{}');
+      const ptsEarned = (cfg.pointsPerService && cfg.pointsPerService[service]) || 10;
+      await API.updateCustomerPoints(currentUser, 'add', ptsEarned, 'Booked ' + service + ' service');
+      await syncRewards();
+      if (typeof renderRewardsDashboard === 'function') renderRewardsDashboard();
+      
+      const btn = callbackForm.querySelector('.btn-submit');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+      setTimeout(() => {
+        callbackForm.style.display = 'none';
+        callbackSuccess.style.display = 'block';
+        showToast('Callback request sent! We\'ll call you back shortly 📞', 'success');
+      }, 1500);
+    }
+  });
+}
+
+// Override gallery upload
+const _origUploadBtn = document.getElementById('uploadBtn');
+if (_origUploadBtn) {
+  _origUploadBtn.addEventListener('click', async () => {
+    if (!apiMode || !currentUser || userRole !== 'admin') return;
+    document.getElementById('fileInput').click();
+  });
+  
+  const _origFileInput = document.getElementById('fileInput');
+  _origFileInput.addEventListener('change', async (e) => {
+    if (!apiMode) return;
+    const files = e.target.files;
+    if (!files.length) return;
+    const result = await API.uploadGallery(files);
+    if (result.success) {
+      await loadGalleryFromServer();
+      showToast(files.length + ' image(s) uploaded successfully! 📸', 'success');
+    }
+    _origFileInput.value = '';
+  });
+}
+
+// Gallery load from server
+async function loadGalleryFromServer() {
+  if (!apiMode) return;
+  const result = await API.getGallery();
+  if (result && Array.isArray(result)) {
+    const galleryGrid = document.getElementById('galleryGrid');
+    galleryGrid.innerHTML = '';
+    if (result.length === 0) {
+      galleryGrid.innerHTML = '<div class="gallery-item empty-state" data-type="empty"><i class="fas fa-image"></i><span>No images yet</span></div>'.repeat(3);
+      return;
+    }
+    result.forEach((img, i) => {
+      const item = document.createElement('div');
+      item.className = 'gallery-item';
+      item.dataset.index = i;
+      item.dataset.filename = img.filename;
+      if (currentUser && userRole === 'admin') item.classList.add('show-delete');
+      item.innerHTML = '<img src="' + img.url + '" alt="Gallery ' + (i+1) + '" /><div class="gallery-overlay"><span>View</span></div><input type="checkbox" class="delete-checkbox" data-filename="' + img.filename + '" />';
+      galleryGrid.appendChild(item);
+    });
+  }
+}
+
+// Override gallery delete
+const _origDeleteBtn = document.getElementById('deleteBtn');
+if (_origDeleteBtn) {
+  _origDeleteBtn.addEventListener('click', async () => {
+    if (!apiMode || !currentUser || userRole !== 'admin') return;
+    const checked = document.querySelectorAll('.delete-checkbox:checked');
+    if (checked.length === 0) { alert('Please select images to delete.'); return; }
+    if (!confirm('Delete ' + checked.length + ' selected image(s)?')) return;
+    const filenames = [];
+    checked.forEach(cb => filenames.push(cb.dataset.filename));
+    const result = await API.deleteGallery(filenames);
+    if (result.success) {
+      await loadGalleryFromServer();
+      if (currentUser && userRole === 'admin') {
+        document.querySelectorAll('.gallery-item').forEach(i => { if (i.dataset.type !== 'empty') i.classList.add('show-delete'); });
+      }
+      showToast('Selected image(s) deleted successfully! 🗑️', 'info');
+    }
+  });
+}
+
+/* ====== REWARDS API OVERRIDES ====== */
+// Override renderRewardsDashboard to check API for live data
+const _origRenderRewards = typeof renderRewardsDashboard === 'function' ? renderRewardsDashboard : function(){};
+async function renderRewardsFromAPI() {
+  if (!apiMode) { if (typeof _origRenderRewards === 'function') _origRenderRewards(); return; }
+  await syncRewards();
+  if (typeof _origRenderRewards === 'function') _origRenderRewards();
+}
+
+/* ====== INIT ====== */
+window.addEventListener('load', async ()=>{
+  // Boot API connection first
+  await bootAPI();
+  
+  loadSession();
+  loadReviews();
+  
+  // Use server gallery if available, else localStorage
+  if (apiMode) {
+    await loadGalleryFromServer();
+    await syncOffers();
+  } else {
+    loadGallery();
+  }
+  
+  loadUsers();
+  resetCallbackForm();
+  startSlideshow();
+  if(currentUser)renderRewardsDashboard();
+  // Init offers - set student visible by default
+  Object.keys(offerPanels).forEach((k,i)=>{
+    offerPanels[k].classList.toggle('visible',i===0);
+  });
+  // Preload offers data
+  loadOffers();
+});
+</script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a239f60b0f82a6dc',t:'MTc4NTQ3MzIwNA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f"}' crossorigin="anonymous"></script>
+</body>
+</html>
